@@ -1,0 +1,179 @@
+{
+  "main": {
+    "id": "d6c8c6664a2081ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "368724b20cf64851",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5d1515e62b42c0b2",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nueva pestaña"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2e4496132b843917",
+    "type": "split",
+    "children": [
+      {
+        "id": "57c1f80dd7b89c17",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f89770d9b397cdc8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "0016e96eff84e8c8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "d9bc1466d5f520fe",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fe6223fe8f51cf24",
+    "type": "split",
+    "children": [
+      {
+        "id": "0e2fedc098a5d9b4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "61ee6462ebb6b0bc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes"
+            }
+          },
+          {
+            "id": "2dc08ddf6b233763",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes"
+            }
+          },
+          {
+            "id": "dc2424f58b51afa2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "17f861a81ddbb8de",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false
+    }
+  },
+  "active": "f89770d9b397cdc8",
+  "lastOpenFiles": [
+    "ARQCOMP/archivos/imagenes",
+    "BDII/archivos/imagenes",
+    "COGA/archivos/imagenes",
+    "DESOFT/archivos/imagenes",
+    "XEFE/archivos/imagenes",
+    "SOII/archivos/imagenes",
+    "XEFE/archivos/bibliografia",
+    "SOII/archivos/bibliografia",
+    "DESOFT/archivos/bibliografia",
+    "COGA/archivos/bibliografia",
+    "BDII/archivos/bibliografia",
+    "Bienvenido.md"
+  ]
+}
