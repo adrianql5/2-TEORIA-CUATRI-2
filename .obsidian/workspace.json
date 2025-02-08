@@ -4,20 +4,69 @@
     "type": "split",
     "children": [
       {
-        "id": "368724b20cf64851",
+        "id": "27dfc88f15f5d61f",
         "type": "tabs",
+        "dimension": 50.98870056497176,
         "children": [
           {
-            "id": "5d1515e62b42c0b2",
+            "id": "b14361f392782d57",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "AQRCOMP/1. Sistemas Multinúcleo.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "1. Sistemas Multinúcleo"
             }
           }
         ]
+      },
+      {
+        "id": "b75575b305508998",
+        "type": "split",
+        "dimension": 49.01129943502825,
+        "children": [
+          {
+            "id": "29f7c15ae5b2d979",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "9092f560b64daf1f",
+                "type": "leaf",
+                "state": {
+                  "type": "pdf",
+                  "state": {
+                    "file": "AQRCOMP/archivos/bibliografia/BitacorasARQCOMP_180222231655.pdf"
+                  },
+                  "icon": "lucide-file-text",
+                  "title": "BitacorasARQCOMP_180222231655"
+                }
+              }
+            ]
+          },
+          {
+            "id": "d0901c7763316f7e",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "8445846dd7c12028",
+                "type": "leaf",
+                "state": {
+                  "type": "pdf",
+                  "state": {
+                    "file": "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf"
+                  },
+                  "icon": "lucide-file-text",
+                  "title": "Tema1-24-25"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -90,6 +139,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "XEFE/2. Creación de empresas, de la generación de ideas al business plan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +149,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes"
+              "title": "Enlaces entrantes de 2. Creación de empresas, de la generación de ideas al business plan"
             }
           },
           {
@@ -144,7 +194,8 @@
               "title": "Esquema"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -161,19 +212,33 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "f89770d9b397cdc8",
+  "active": "9092f560b64daf1f",
   "lastOpenFiles": [
-    "ARQCOMP/archivos/imagenes",
-    "BDII/archivos/imagenes",
-    "COGA/archivos/imagenes",
-    "DESOFT/archivos/imagenes",
-    "XEFE/archivos/imagenes",
-    "SOII/archivos/imagenes",
-    "XEFE/archivos/bibliografia",
-    "SOII/archivos/bibliografia",
-    "DESOFT/archivos/bibliografia",
-    "COGA/archivos/bibliografia",
-    "BDII/archivos/bibliografia",
+    "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250206182647.png",
+    "AQRCOMP/archivos/bibliografia/BitacorasARQCOMP_180222231655.pdf",
+    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250206181938.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250206180943.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250206180638.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250206180508.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250206180244.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250206173816.png",
+    "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf",
+    "SOII/archivos/bibliografia/[1] Sistemas Operativos - Una Vision Aplicada.pdf",
+    "XEFE/2. Creación de empresas, de la generación de ideas al business plan.md",
+    "XEFE/1. Introducción a la actividad económica y empresarial.md",
+    "SOII/1. Comunicación y Sincronización entre Procesos.md",
+    "DESOFT/2. Modelado de Casos de Uso.md",
+    "DESOFT/1. Introducción a UML.md",
+    "COGA/1. Introducción.md",
+    "COGA/archivos/bibliografia/BitacorasCOGA_180222231744.pdf",
+    "BDII/Sin título.md",
+    "Sin nombre",
+    "XEFE/archivos/bibliografia/OXE_KAHOOTS_TESTS_CON_SOLUCIONES_280621192403.pdf",
+    "XEFE/archivos/bibliografia/BitacorasOXE_180222231720.pdf",
+    "DESOFT/archivos/bibliografia/02_UML_modelado_de_casos_de_uso.pdf",
+    "DESOFT/archivos/bibliografia/01_UML_intro.pdf",
     "Bienvenido.md"
   ]
 }

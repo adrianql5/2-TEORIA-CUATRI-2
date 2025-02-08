@@ -1,0 +1,11 @@
+{
+  "obsidian-hider:toggle-tab-containers": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "-"
+    }
+  ]
+}

@@ -1,3 +1,7 @@
 {
-  "theme": "moonstone"
+  "theme": "moonstone",
+  "cssTheme": "Obsidian Nord",
+  "interfaceFontFamily": "Agave Nerd Font",
+  "textFontFamily": "Agave Nerd Font",
+  "monospaceFontFamily": "Agave Nerd Font Mono"
 }
