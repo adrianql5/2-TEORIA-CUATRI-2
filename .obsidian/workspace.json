@@ -4,24 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "719aee1fd82deb81",
+        "id": "40cd831c8c26a7c5",
         "type": "tabs",
         "children": [
           {
-            "id": "a39b94582c34ee9f",
+            "id": "f779314ade3d5e92",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "XEFE/2. Creación de empresas, de la generación de ideas al Business Plan.md",
+                "file": "COGA/1. Introducción.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. Creación de empresas, de la generación de ideas al Business Plan"
+              "title": "1. Introducción"
+            }
+          },
+          {
+            "id": "9a64a4352dc17b26",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "COGA/2. Open GL.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2. Open GL"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -167,36 +182,41 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "a39b94582c34ee9f",
+  "active": "9a64a4352dc17b26",
   "lastOpenFiles": [
-    "XEFE/1. Introducción a la actividad económica y empresarial.md",
-    "XEFE/2. Creación de empresas, de la generación de ideas al Business Plan.md",
-    "XEFE/archivos/bibliografia/OXE_KAHOOTS_TESTS_CON_SOLUCIONES_280621192403.pdf",
-    "XEFE/archivos/bibliografia/BitacorasOXE_180222231720.pdf",
-    "XEFE/archivos/imagenes/Pasted image 20250211134628.png",
-    "XEFE/archivos/imagenes/Pasted image 20250211131827.png",
-    "XEFE/archivos/imagenes/Pasted image 20250211131512.png",
-    "XEFE/archivos/imagenes/Pasted image 20250211131111.png",
-    "XEFE/archivos/imagenes/Pasted image 20250211130527.png",
-    "XEFE/archivos/imagenes/Pasted image 20250211125354.png",
-    "XEFE/archivos/imagenes/Pasted image 20250211125245.png",
-    "XEFE/archivos/imagenes/Pasted image 20250211123852.png",
-    "XEFE/archivos/imagenes/Pasted image 20250211123545.png",
-    "XEFE/archivos/imagenes/Pasted image 20250210194456.png",
-    "BDII/archivos/bibliografia/bases_datos.pdf",
-    "BDII/1. SQL Avanzado.md",
-    "BDII/archivos/bibliografia/[1] Fundamentos de Bases de Datos {6}.pdf",
-    "BDII/archivos/bibliografia/[1] (6ºed) {NO} Fundamentos de Bases de Datos.pdf",
-    "[1] (6ºed) {NO} Fundamentos de Bases de Datos.pdf",
-    "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf",
-    "AQRCOMP/archivos/bibliografia/BitacorasARQCOMP_180222231655.pdf",
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf",
-    "SOII/archivos/bibliografia/[1] Sistemas Operativos - Una Vision Aplicada.pdf",
-    "SOII/1. Comunicación y Sincronización entre Procesos.md",
-    "DESOFT/2. Modelado de Casos de Uso.md",
-    "DESOFT/1. Introducción a UML.md",
     "COGA/1. Introducción.md",
+    "COGA/2. Open GL.md",
+    "COGA/archivos/imagenes/Pasted image 20250216235859.png",
+    "COGA/archivos/imagenes/Pasted image 20250216235842.png",
+    "COGA/archivos/imagenes/Pasted image 20250216235210.png",
+    "COGA/archivos/imagenes/Pasted image 20250216234902.png",
+    "COGA/archivos/imagenes/Pasted image 20250216234644.png",
+    "COGA/archivos/imagenes/Pasted image 20250216234057.png",
+    "COGA/archivos/bibliografia/BitacorasCOGA_180222231744.pdf",
+    "XEFE/archivos/bibliografia/BitacorasOXE_180222231720.pdf",
+    "XEFE/3. La Información Financiera como Base para la toma de Decisiones..md",
+    "XEFE/archivos/imagenes/Pasted image 20250216165123.png",
+    "XEFE/archivos/imagenes/Pasted image 20250216165014.png",
+    "XEFE/archivos/imagenes/Pasted image 20250216164927.png",
+    "XEFE/archivos/imagenes/Pasted image 20250216164655.png",
+    "XEFE/2. Creación de empresas, de la generación de ideas al Business Plan.md",
+    "DESOFT/2. Modelado de Casos de Uso.md",
+    "BDII/archivos/bibliografia/bases_datos.pdf",
+    "BDII/2. Seguridad.md",
+    "BDII/1. SQL Avanzado.md",
+    "SOII/archivos/bibliografia/[1] Sistemas Operativos - Una Vision Aplicada.pdf",
+    "Gráficas Foro1.md",
+    "archivos/imagenes",
+    "archivos",
+    "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf",
+    "SOII/1. Comunicación y Sincronización entre Procesos (IPC).md",
+    "AQRCOMP/archivos/bibliografia/BitacorasARQCOMP_180222231655.pdf",
+    "SOII/5. Bash Cheatsheet.md",
+    "XEFE/archivos/bibliografia/OXE_KAHOOTS_TESTS_CON_SOLUCIONES_280621192403.pdf",
+    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf",
+    "DESOFT/1. Introducción a UML.md",
+    "XEFE/1. Introducción a la actividad económica y empresarial.md",
     "Bienvenido.md"
   ]
 }
