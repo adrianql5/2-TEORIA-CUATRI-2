@@ -4,39 +4,67 @@
     "type": "split",
     "children": [
       {
-        "id": "40cd831c8c26a7c5",
+        "id": "4064842eb66b7cb0",
         "type": "tabs",
         "children": [
           {
-            "id": "f779314ade3d5e92",
+            "id": "3f6d6281760975d6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "COGA/1. Introducción.md",
+                "file": "COGA/1. TEMA 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Introducción"
+              "title": "1. TEMA 1"
             }
           },
           {
-            "id": "9a64a4352dc17b26",
+            "id": "1d4632c3c1eecb83",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "COGA/2. Open GL.md",
+                "file": "COGA/2. Programar en GLUT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. Open GL"
+              "title": "2. Programar en GLUT"
+            }
+          },
+          {
+            "id": "7f036c80aa45f9ca",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "COGA/Sin título.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Sin título"
+            }
+          },
+          {
+            "id": "71ca59d6ff266bf1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "COGA/2. Programar en GLUT.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2. Programar en GLUT"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -93,7 +121,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "fe6223fe8f51cf24",
@@ -182,40 +211,45 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "9a64a4352dc17b26",
+  "active": "71ca59d6ff266bf1",
   "lastOpenFiles": [
-    "COGA/1. Introducción.md",
-    "COGA/2. Open GL.md",
-    "COGA/archivos/imagenes/Pasted image 20250216235859.png",
-    "COGA/archivos/imagenes/Pasted image 20250216235842.png",
-    "COGA/archivos/imagenes/Pasted image 20250216235210.png",
-    "COGA/archivos/imagenes/Pasted image 20250216234902.png",
-    "COGA/archivos/imagenes/Pasted image 20250216234644.png",
-    "COGA/archivos/imagenes/Pasted image 20250216234057.png",
+    "COGA/1. TEMA 1.md",
+    "COGA/2. Programar en GLUT.md",
+    "COGA/archivos/imagenes/Pasted image 20250301160144.png",
+    "COGA/archivos/imagenes/Pasted image 20250301155947.png",
+    "COGA/archivos/imagenes/Pasted image 20250301155440.png",
+    "COGA/archivos/imagenes/Pasted image 20250301155409.png",
+    "COGA/3. Programar en OpenGL.md",
+    "COGA/Sin título 1.md",
+    "COGA/archivos/imagenes/Pasted image 20250228224522.png",
+    "COGA/archivos/imagenes/Pasted image 20250228224504.png",
+    "COGA/archivos/imagenes/Pasted image 20250228224206.png",
+    "COGA/archivos/imagenes/Pasted image 20250228223916.png",
+    "COGA/archivos/imagenes/Pasted image 20250228223346.png",
+    "XEFE/4. Interpretación y Análisis de la información financiera.md",
+    "COGA/archivos/imagenes/Pasted image 20250228205458.png",
     "COGA/archivos/bibliografia/BitacorasCOGA_180222231744.pdf",
-    "XEFE/archivos/bibliografia/BitacorasOXE_180222231720.pdf",
+    "DESOFT/3. Modelado Estructural.md",
     "XEFE/3. La Información Financiera como Base para la toma de Decisiones..md",
-    "XEFE/archivos/imagenes/Pasted image 20250216165123.png",
-    "XEFE/archivos/imagenes/Pasted image 20250216165014.png",
-    "XEFE/archivos/imagenes/Pasted image 20250216164927.png",
-    "XEFE/archivos/imagenes/Pasted image 20250216164655.png",
-    "XEFE/2. Creación de empresas, de la generación de ideas al Business Plan.md",
+    "XEFE/archivos/bibliografia/OXE_KAHOOTS_TESTS_CON_SOLUCIONES_280621192403.pdf",
+    "XEFE/archivos/bibliografia/BitacorasOXE_180222231720.pdf",
+    "DESOFT/archivos/bibliografia/03_UML_modelado_estructural.pdf",
+    "DESOFT/archivos/bibliografia/apuntes deseño.pdf",
+    "DESOFT/archivos/bibliografia/[1] El lenguaje unificado de modelado (1a edición).pdf",
+    "DESOFT/archivos/bibliografia/términos_diseño_software.pdf",
     "DESOFT/2. Modelado de Casos de Uso.md",
     "BDII/archivos/bibliografia/bases_datos.pdf",
+    "FINISTERRAE III.md",
+    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "DESOFT/1. Introducción a UML.md",
     "BDII/2. Seguridad.md",
+    "XEFE/2. Creación de empresas, de la generación de ideas al Business Plan.md",
     "BDII/1. SQL Avanzado.md",
     "SOII/archivos/bibliografia/[1] Sistemas Operativos - Una Vision Aplicada.pdf",
     "Gráficas Foro1.md",
     "archivos/imagenes",
-    "archivos",
-    "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf",
     "SOII/1. Comunicación y Sincronización entre Procesos (IPC).md",
-    "AQRCOMP/archivos/bibliografia/BitacorasARQCOMP_180222231655.pdf",
     "SOII/5. Bash Cheatsheet.md",
-    "XEFE/archivos/bibliografia/OXE_KAHOOTS_TESTS_CON_SOLUCIONES_280621192403.pdf",
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf",
-    "DESOFT/1. Introducción a UML.md",
     "XEFE/1. Introducción a la actividad económica y empresarial.md",
     "Bienvenido.md"
   ]
