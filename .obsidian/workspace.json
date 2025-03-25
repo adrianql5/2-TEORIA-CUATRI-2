@@ -4,54 +4,57 @@
     "type": "split",
     "children": [
       {
-        "id": "8b86d5259a0e505b",
+        "id": "9650a7a2a2ab32de",
         "type": "tabs",
+        "dimension": 49.9092558983666,
         "children": [
           {
-            "id": "c5a9139aaf71fb44",
+            "id": "ec50c4812c82fb02",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SOII/1. Comunicación y Sincronización entre Procesos (IPC).md",
+                "file": "BDII/4. Concurrencia.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Comunicación y Sincronización entre Procesos (IPC)"
-            }
-          },
-          {
-            "id": "ac39363c82f2639a",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "[1] Sistemas operativos modernos"
+              "title": "4. Concurrencia"
             }
           }
         ]
       },
       {
-        "id": "a8b32321df84e6cf",
+        "id": "f227fd60254cbb34",
         "type": "tabs",
+        "dimension": 50.09074410163339,
         "children": [
           {
-            "id": "d374ee9d7bbfe625",
+            "id": "6aa1ed2b9ecdc79b",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf"
+                "file": "BDII/archivos/bibliografia/Apuntes BDII-1_030723103045.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "[1] Sistemas operativos modernos"
+              "title": "Apuntes BDII-1_030723103045"
+            }
+          },
+          {
+            "id": "333c5083cc0910aa",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "BDII/archivos/bibliografia/ApuntesBBDD2_180519160719.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "ApuntesBBDD2_180519160719"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -198,16 +201,37 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "c5a9139aaf71fb44",
+  "active": "ec50c4812c82fb02",
   "lastOpenFiles": [
-    "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf",
+    "BDII/3. Transacciones.md",
+    "BDII/archivos/bibliografia/ApuntesBBDD2_180519160719.pdf",
+    "BDII/archivos/bibliografia/Apuntes BDII-1_030723103045.pdf",
+    "BDII/2. Seguridad.md",
+    "BDII/1. SQL Avanzado.md",
+    "BDII/archivos/bibliografia/bases_datos.pdf",
     "SOII/1. Comunicación y Sincronización entre Procesos (IPC).md",
+    "BDII/archivos/Apuntes BDII-1_030723103045.pdf",
+    "BDII/Apuntes BDII-1_030723103045.pdf",
+    "Apuntes BDII-1_030723103045.pdf",
+    "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf",
+    "SOII/archivos/imagenes/Pasted image 20250324164420.png",
+    "SOII/archivos/imagenes/Pasted image 20250324164358.png",
+    "SOII/5. Bash Cheatsheet.md",
+    "DESOFT/archivos/bibliografia/apuntes deseño.pdf",
+    "BDII/4. Concurrencia.md",
+    "DESOFT/4. Modelado de Comportamiento.md",
+    "DESOFT/archivos/imagenes/Pasted image 20250323162914.png",
+    "DESOFT/archivos/imagenes/Pasted image 20250323162659.png",
+    "DESOFT/archivos/imagenes/Pasted image 20250323161253.png",
+    "DESOFT/3. Modelado Estructural.md",
+    "DESOFT/2. Modelado de Casos de Uso.md",
+    "DESOFT/1. Introducción a UML.md",
+    "XEFE/archivos/bibliografia/Exercicios tema 4 rateos e CCMP.pdf",
     "SOII/archivos/imagenes/Pasted image 20250322124847.png",
     "SOII/archivos/imagenes/Pasted image 20250322123107.png",
     "SOII/archivos/imagenes/Pasted image 20250322121723.png",
     "SOII/archivos/imagenes/Pasted image 20250322114243.png",
     "SOII/archivos/imagenes/Pasted image 20250322112620.png",
-    "Sin título.md",
     "COGA/Sin título 1.md",
     "COGA/3. Programar en GLFW.md",
     "COGA/2. Programar en GLUT.md",
@@ -216,34 +240,13 @@
     "README.md",
     "SOII/archivos/bibliografia/[1] Sistemas Operativos - Una Vision Aplicada.pdf",
     "COGA/1. TEMA 1.md",
-    "archivos/imagenes/Pasted image 20250303220621.png",
-    "archivos/imagenes/Pasted image 20250303191907.png",
-    "archivos/imagenes/Pasted image 20250303191612.png",
-    "archivos/imagenes/Pasted image 20250303191459.png",
-    "archivos/imagenes/Pasted image 20250303191440.png",
-    "BDII/3. Transacciones.md",
-    "BDII/archivos/bibliografia/bases_datos.pdf",
-    "DESOFT/archivos/bibliografia/Exercicios tema 4 rateos e CCMP.pdf",
-    "XEFE/archivos/bibliografia/OXE_KAHOOTS_TESTS_CON_SOLUCIONES_280621192403.pdf",
-    "BDII/2. Seguridad.md",
     "FINISTERRAE III.md",
     "foro6.md",
     "foro4.pdf.md",
     "foro5.md",
-    "archivos/imagenes",
-    "archivos",
     "XEFE/4. Interpretación y Análisis de la información financiera.md",
-    "COGA/archivos/bibliografia/BitacorasCOGA_180222231744.pdf",
-    "DESOFT/3. Modelado Estructural.md",
     "XEFE/3. La Información Financiera como Base para la toma de Decisiones..md",
-    "XEFE/archivos/bibliografia/BitacorasOXE_180222231720.pdf",
-    "DESOFT/archivos/bibliografia/03_UML_modelado_estructural.pdf",
-    "DESOFT/2. Modelado de Casos de Uso.md",
     "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "DESOFT/1. Introducción a UML.md",
-    "XEFE/2. Creación de empresas, de la generación de ideas al Business Plan.md",
-    "BDII/1. SQL Avanzado.md",
-    "Gráficas Foro1.md",
-    "SOII/5. Bash Cheatsheet.md"
+    "XEFE/2. Creación de empresas, de la generación de ideas al Business Plan.md"
   ]
 }
