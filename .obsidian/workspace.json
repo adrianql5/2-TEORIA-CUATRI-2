@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "BDII/4. Concurrencia.md",
+                "file": "BDII/4. Control de Concurrencia.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Concurrencia"
+              "title": "4. Control de Concurrencia"
             }
           }
         ]
@@ -203,9 +203,10 @@
   },
   "active": "ec50c4812c82fb02",
   "lastOpenFiles": [
-    "BDII/3. Transacciones.md",
     "BDII/archivos/bibliografia/ApuntesBBDD2_180519160719.pdf",
+    "BDII/4. Control de Concurrencia.md",
     "BDII/archivos/bibliografia/Apuntes BDII-1_030723103045.pdf",
+    "BDII/3. Transacciones.md",
     "BDII/2. Seguridad.md",
     "BDII/1. SQL Avanzado.md",
     "BDII/archivos/bibliografia/bases_datos.pdf",
@@ -218,7 +219,6 @@
     "SOII/archivos/imagenes/Pasted image 20250324164358.png",
     "SOII/5. Bash Cheatsheet.md",
     "DESOFT/archivos/bibliografia/apuntes deseño.pdf",
-    "BDII/4. Concurrencia.md",
     "DESOFT/4. Modelado de Comportamiento.md",
     "DESOFT/archivos/imagenes/Pasted image 20250323162914.png",
     "DESOFT/archivos/imagenes/Pasted image 20250323162659.png",
