@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TEMA 3.md",
+                "file": "COGA/Programar en GLFW.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TEMA 3"
+              "title": "Programar en GLFW"
             }
           }
         ],
@@ -125,8 +125,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "fe6223fe8f51cf24",
@@ -217,11 +216,11 @@
   },
   "active": "ab70488d617196a1",
   "lastOpenFiles": [
+    "COGA/Programar en GLUT.md",
+    "COGA/3. TEMA 3.md",
+    "COGA/2. TEMA 2.md",
     "COGA/archivos/bibliografia/BitacorasCOGA_180222231744.pdf",
-    "COGA/3. Programar en GLFW.md",
-    "COGA/2. Programar en GLUT.md",
-    "TEMA 3.md",
-    "TEMA 2.md",
+    "COGA/Programar en GLFW.md",
     "BDII/archivos/bibliografia/ApuntesBBDD2_180519160719.pdf",
     "BDII/4. Control de Concurrencia.md",
     "BDII/archivos/bibliografia/Apuntes BDII-1_030723103045.pdf",
