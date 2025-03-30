@@ -195,6 +195,12 @@ gluPerspective(45.0,  // Ángulo de visión vertical
 ```
 
 ![[Pasted image 20250301160144.png]]
+>[!Nota]
+> `gluPerspective( fovy, aspect, near, far)
+> - **Fovy** se trata del ángulo con el que se abre el foco, normalmente 45 o 60 grados
+> - **Aspect** es el tamaño de la ventana que suele ser el **alto/ancho**.
+> - **Near y Far** que determinan desde donde ve la cámara hasta donde ve la cámara
+
 
 - **Ortogonal** (`glOrtho`): No hay perspectiva, los objetos mantienen su tamaño sin importar la distancia.
 ```c++
@@ -340,3 +346,269 @@ void myTeclasespeciales(int cursor, int x, int y)
 }
 ```
 
+# 2.7 Iluminación (crazy shi)
+
+## 2.7.1 Concepto General de Luces en OpenGL 1.2
+En OpenGL 1.2, las luces se manejan manualmente. Se deben encender y configurar adecuadamente para iluminar los objetos de la escena.
+
+1. **Encender las luces** con `glEnable(GL_LIGHTING)`. 
+2. **Activar luces específicas** con `glEnable(GL_LIGHT0)`, `GL_LIGHT1`, etc.
+3. **Definir las propiedades de la luz** (ambiente, difusa, especular).
+4. **Definir las propiedades del material** de los objetos.
+5. **Configurar el modelo de sombreado** (`GL_FLAT` o `GL_SMOOTH`).
+
+**Ejemplo**
+```cpp
+glEnable(GL_CULL_FACE); //Al dibujar la mitad de caras aumenta el rendimiento
+glEnable(GL_DEPTH_TEST);  // Activar el buffer de profundidad
+glEnable(GL_LIGHTING);    // Activar el sistema de iluminación
+glEnable(GL_LIGHT0);      // Activar la luz 0
+glEnable(GL_COLOR_MATERIAL);  // Permitir que los colores del material afecten la luz
+glShadeModel(GL_SMOOTH);  // Sombreado suave
+```
+
+## 2.7.2 Tipos de Luz en OpenGL
+OpenGL 1.2 permite 4 tipos de luces:
+
+1. **Luz Ambiente**
+2. **Luz Direccional**
+3. **Luz Local (Puntual)**
+4. **Focos de Luz (Spotlights)**
+
+### **2.7.2.1 Luz Ambiente**
+Es la luz general que se dispersa en todas las direcciones. No tiene una dirección específica y afecta a todos los objetos de la misma manera.
+
+
+```cpp
+GLfloat luz_ambiente[] = {0.2, 0.2, 0.2, 1.0}; // Luz tenue global
+glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luz_ambiente);
+```
+
+### **2.7.2.2 Luz Direccional**
+Simula una fuente de luz situada en el infinito, como el Sol. Todos los rayos de luz son paralelos.
+
+```cpp
+GLfloat direccion_luz[] = {1.0, 1.0, 1.0, 0.0}; // Último valor = 0 → Luz direccional
+glLightfv(GL_LIGHT0, GL_POSITION, direccion_luz);
+```
+
+>[!Nota]
+>``` 
+>void glLightfv(GLenum light, GLenum pname, const GLfloat *params);
+>```
+
+
+
+### **2.7.2.3 Luz Local (Puntual)**
+
+Se origina en un punto específico y se propaga en todas direcciones, como una bombilla.
+
+
+```cpp
+GLfloat posicion[] = {0.0, 5.0, 0.0, 1.0}; // Último valor = 1 → Luz local
+glLightfv(GL_LIGHT0, GL_POSITION, posicion);
+```
+
+### **2.7.2.4 Focos de Luz (Spotlights)**
+
+Es una luz direccional con un ángulo de apertura, como una linterna.
+
+```cpp
+GLfloat posicion[] = {0.0, 5.0, 0.0, 1.0}; // Posición de la luz
+GLfloat direccion[] = {0.0, -1.0, 0.0};    // Dirección hacia donde apunta
+glLightfv(GL_LIGHT0, GL_POSITION, posicion);
+glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direccion);
+glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 30.0); // Ángulo de apertura en grados
+```
+
+
+## 2.7.3 Componentes de la Luz en OpenGL
+Cada luz en OpenGL tiene tres componentes principales:
+
+1. **Ambiente (`GL_AMBIENT`)** → Luz difusa general.
+2. **Difusa (`GL_DIFFUSE`)** → Luz que se refleja en todas direcciones (según Lambert).
+3. **Especular (`GL_SPECULAR`)** → Reflejos brillantes.
+
+```cpp
+GLfloat light_ambient[] = {0.2, 0.2, 0.2, 1.0};  // Componente ambiente
+GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};  // Componente difusa
+GLfloat light_specular[] = {1.0, 1.0, 1.0, 1.0}; // Componente especular
+glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+```
+
+#### **Consecuencias en la escena**
+`GL_AMBIENT`: Proporciona iluminación base para evitar sombras negras.  
+`GL_DIFFUSE`: Define el color principal de los objetos iluminados.  
+`GL_SPECULAR`: Agrega reflejos brillantes y realistas.
+
+
+## 2.7.4 Atenuación de la Luz**
+Las luces locales y focos pueden perder intensidad con la distancia. OpenGL permite ajustar esto con tres parámetros:
+
+- `GL_CONSTANT_ATTENUATION`: Factor de atenuación constante.
+- `GL_LINEAR_ATTENUATION`: Factor de atenuación lineal.
+- `GL_QUADRATIC_ATTENUATION`: Factor de atenuación cuadrática.
+
+
+```cpp
+glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 1.0);
+glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 0.1);
+glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.01);
+```
+
+
+## 2.7.5 Modelos de Sombreado
+OpenGL permite dos modelos de sombreado:
+
+- `GL_FLAT`: Un solo color por cara → efectos de bordes marcados.
+- `GL_SMOOTH`: Interpolación de color entre los vértices → transiciones suaves.
+
+```cpp
+glShadeModel(GL_FLAT);  // Bordes marcados
+glShadeModel(GL_SMOOTH); // Transiciones suaves
+```
+
+
+## 2.7.6 Resumen General
+
+|Tipo de Luz|Propiedades|Ejemplo de Uso|Consecuencias|
+|---|---|---|---|
+|**Ambiente**|Ilumina toda la escena uniformemente|Luz global de la escena|No genera sombras ni efectos de profundidad|
+|**Direccional**|Rayo de luz paralelo (como el Sol)|Luz solar en juegos|No se atenúa con la distancia|
+|**Local (Puntual)**|Se propaga desde un punto en todas direcciones|Bombilla, lámpara|Se atenúa con la distancia|
+|**Foco**|Luz direccional con un cono de iluminación|Linterna, faro de coche|Efectos de iluminación más realistas|
+## 2.7.8 Chuleta
+Cambiar los valores en los vectores pasados a `glLightfv` afecta cómo se comporta la luz en la escena. Vamos a ver qué ocurre al modificar cada parámetro, con ejemplos y sus consecuencias.
+
+## **1. `GL_AMBIENT` (Luz ambiente)**
+
+```cpp
+GLfloat luz_ambiente[] = {R, G, B, A};
+glLightfv(GL_LIGHT0, GL_AMBIENT, luz_ambiente);
+```
+
+**Efecto:** Cambia el color y la intensidad de la luz ambiente en la escena.
+
+|Valor|Efecto|
+|---|---|
+|`{1.0, 1.0, 1.0, 1.0}`|Luz ambiente blanca brillante (todo se ilumina).|
+|`{0.5, 0.5, 0.5, 1.0}`|Luz grisácea, los objetos se ven menos iluminados.|
+|`{0.0, 0.0, 0.0, 1.0}`|Sin luz ambiente, las sombras serán muy marcadas.|
+|`{1.0, 0.0, 0.0, 1.0}`|Todo tendrá un tono rojo en las zonas sin luz directa.|
+
+**Consecuencia:** Si se pone un valor muy alto, la escena parecerá "lavada" porque no habrá sombras fuertes.
+
+## **2. `GL_DIFFUSE` (Luz difusa)**
+
+```cpp
+GLfloat luz_difusa[] = {R, G, B, A};
+glLightfv(GL_LIGHT0, GL_DIFFUSE, luz_difusa);
+```
+
+**Efecto:** Cambia la iluminación sobre superficies que reciben luz directa.
+
+|Valor|Efecto|
+|---|---|
+|`{1.0, 1.0, 1.0, 1.0}`|Iluminación blanca intensa en áreas expuestas.|
+|`{0.5, 0.5, 0.5, 1.0}`|Iluminación más suave en superficies.|
+|`{0.0, 0.0, 0.0, 1.0}`|No hay iluminación difusa (los objetos no reflejan luz).|
+|`{1.0, 0.0, 0.0, 1.0}`|Las áreas iluminadas serán rojas.|
+
+**Consecuencia:** Si la luz difusa es demasiado baja, los objetos pueden parecer planos y sin volumen.
+
+## **3. `GL_SPECULAR` (Luz especular o reflejos)**
+
+```cpp
+GLfloat luz_especular[] = {R, G, B, A};
+glLightfv(GL_LIGHT0, GL_SPECULAR, luz_especular);
+```
+
+**Efecto:** Afecta los reflejos en superficies brillantes.
+
+|Valor|Efecto|
+|---|---|
+|`{1.0, 1.0, 1.0, 1.0}`|Reflejos blancos y brillantes (metal o plástico pulido).|
+|`{0.5, 0.5, 0.5, 1.0}`|Reflejos más suaves y naturales.|
+|`{0.0, 0.0, 0.0, 1.0}`|Sin reflejos (parece material mate).|
+|`{1.0, 0.0, 0.0, 1.0}`|Reflejos rojizos en superficies brillantes.|
+
+**Consecuencia:** Si se usa un color de especular muy diferente al difuso, los reflejos pueden verse irreales.
+
+## **4. `GL_POSITION` (Posición de la luz)**
+
+```cpp
+GLfloat posicion[] = {X, Y, Z, W};
+glLightfv(GL_LIGHT0, GL_POSITION, posicion);
+```
+
+**Efecto:** Controla la posición de la luz en la escena.
+
+|Valor|Efecto|
+|---|---|
+|`{0.0, 10.0, 0.0, 1.0}`|Luz sobre la escena, similar al sol en el cielo.|
+|`{10.0, 0.0, 0.0, 1.0}`|Luz a un costado, genera sombras largas.|
+|`{0.0, 0.0, 10.0, 1.0}`|Luz frontal, minimiza sombras.|
+|`{0.0, 0.0, 1.0, 0.0}`|Luz direccional, apunta siempre en una dirección fija.|
+
+**Consecuencia:**
+
+- Si `W=1.0`, la luz es **puntual** (parecida a un foco).
+- Si `W=0.0`, la luz es **direccional** (como la luz del sol, sin punto de origen).
+
+
+## **5. `GL_SPOT_DIRECTION` (Dirección de un foco)**
+
+```cpp
+GLfloat direccion_foco[] = {X, Y, Z};
+glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direccion_foco);
+```
+
+**Efecto:** Define la dirección en la que apunta un foco de luz.
+
+|Valor|Efecto|
+|---|---|
+|`{0.0, -1.0, 0.0}`|Foco que apunta hacia abajo.|
+|`{1.0, 0.0, 0.0}`|Foco que apunta a la derecha.|
+|`{0.0, 0.0, -1.0}`|Foco que apunta hacia el frente.|
+
+**Consecuencia:** Si la dirección no coincide con la posición de la luz, el efecto será extraño.
+
+
+## **6. `GL_SPOT_CUTOFF` (Ángulo del foco)**
+
+```cpp
+glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, angulo);
+```
+
+**Efecto:** Controla qué tan amplio es el cono de luz del foco.
+
+|Valor|Efecto|
+|---|---|
+|`180.0`|Se convierte en una luz normal sin recorte.|
+|`90.0`|Ilumina todo lo que está en un hemisferio.|
+|`30.0`|Cono de luz más cerrado, como una linterna.|
+|`5.0`|Haz de luz muy fino, como un láser.|
+
+**Consecuencia:**
+
+- Si el ángulo es **muy grande**, la luz parece una luz normal.
+- Si el ángulo es **muy pequeño**, puede que la luz sea difícil de ver.
+
+
+## **7. `GL_SPOT_EXPONENT` (Intensidad del foco)**
+
+```cpp
+glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, valor);
+```
+
+**Efecto:** Controla qué tan fuerte es la luz en el centro del cono.
+
+|Valor|Efecto|
+|---|---|
+|`0`|La luz es uniforme dentro del cono.|
+|`10`|Más brillante en el centro, se atenúa hacia los lados.|
+|`100`|Muy concentrada en el centro, los bordes casi no iluminan.|
+
+ **Consecuencia:** Un valor alto simula una linterna potente con un centro más brillante.
