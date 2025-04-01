@@ -367,62 +367,20 @@ glEnable(GL_COLOR_MATERIAL);  // Permitir que los colores del material afecten l
 glShadeModel(GL_SMOOTH);  // Sombreado suave
 ```
 
-## 2.7.2 Tipos de Luz en OpenGL
-OpenGL 1.2 permite 4 tipos de luces:
 
-1. **Luz Ambiente**
-2. **Luz Direccional**
-3. **Luz Local (Puntual)**
-4. **Focos de Luz (Spotlights)**
-
-### **2.7.2.1 Luz Ambiente**
+## 2.7.1 Luz Ambiente
 Es la luz general que se dispersa en todas las direcciones. No tiene una dirección específica y afecta a todos los objetos de la misma manera.
 
-
 ```cpp
-GLfloat luz_ambiente[] = {0.2, 0.2, 0.2, 1.0}; // Luz tenue global
+GLfloat luz_ambiente[] = {0.2, 0.2, 0.2, 1.0}; //indicamos de que color es la luz ambiente (RGBA)
 glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luz_ambiente);
+
+glLightModelfv(GL_LIGH_MODEL_LOCAL_VIEWER, TRUE); //se usa para que las luces afecten a ambar caras de un material
+
+glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, TRUE); //colocal el modo de cáculo con el observador lcoal, si no todos los cálculos se hacen como si el observador estuviese situadosobre el eje z
 ```
 
-### **2.7.2.2 Luz Direccional**
-Simula una fuente de luz situada en el infinito, como el Sol. Todos los rayos de luz son paralelos.
-
-```cpp
-GLfloat direccion_luz[] = {1.0, 1.0, 1.0, 0.0}; // Último valor = 0 → Luz direccional
-glLightfv(GL_LIGHT0, GL_POSITION, direccion_luz);
-```
-
->[!Nota]
->``` 
->void glLightfv(GLenum light, GLenum pname, const GLfloat *params);
->```
-
-
-
-### **2.7.2.3 Luz Local (Puntual)**
-
-Se origina en un punto específico y se propaga en todas direcciones, como una bombilla.
-
-
-```cpp
-GLfloat posicion[] = {0.0, 5.0, 0.0, 1.0}; // Último valor = 1 → Luz local
-glLightfv(GL_LIGHT0, GL_POSITION, posicion);
-```
-
-### **2.7.2.4 Focos de Luz (Spotlights)**
-
-Es una luz direccional con un ángulo de apertura, como una linterna.
-
-```cpp
-GLfloat posicion[] = {0.0, 5.0, 0.0, 1.0}; // Posición de la luz
-GLfloat direccion[] = {0.0, -1.0, 0.0};    // Dirección hacia donde apunta
-glLightfv(GL_LIGHT0, GL_POSITION, posicion);
-glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direccion);
-glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 30.0); // Ángulo de apertura en grados
-```
-
-
-## 2.7.3 Componentes de la Luz en OpenGL
+## 2.7.2 Componentes de la Luz GL
 Cada luz en OpenGL tiene tres componentes principales:
 
 1. **Ambiente (`GL_AMBIENT`)** → Luz difusa general.
@@ -444,13 +402,60 @@ glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
 `GL_SPECULAR`: Agrega reflejos brillantes y realistas.
 
 
-## 2.7.4 Atenuación de la Luz**
+## 2.7.3 Luz Direccional
+
+Simula una fuente de luz situada en el infinito, como el Sol. Todos los rayos de luz son paralelos y no sufren atenuación con la distancia. Para definir una luz direccional en OpenGL, el cuarto componente del vector de posición debe ser 0.
+
+```cpp
+GLfloat direccion[] = {0.0, -1.0, 0.0, 0.0}; // Dirección de la luz direccional
+ glLightfv(GL_LIGHT0, GL_POSITION, direccion);
+```
+
+- No tiene una posición definida, solo una dirección. 
+- No se atenúa con la distancia.
+- Ilumina de manera uniforme en toda la escena.
+
+![[Pasted image 20250401125724.png]]
+## 2.7.4 Luz Local (Puntual)
+
+Es una luz que emana desde un punto específico en el espacio y se propaga en todas direcciones, similar a una bombilla.
+
+```cpp
+GLfloat posicion[] = {0.0, 5.0, 0.0, 1.0}; // Último valor = 1 → Luz local
+ glLightfv(GL_LIGHT0, GL_POSITION, posicion);
+```
+
+- Se define con un vector de posición donde el cuarto componente es 1. 
+- Se atenúa con la distancia al objeto iluminado.
+- Puede ser usada para simular fuentes de luz naturales o artificiales dentro de la escena.
+
+ ![[Pasted image 20250401125734.png]]
+
+## 2.7.5 Focos de Luz (Spotlights)
+
+Un foco es una luz localizada que emite luz en una dirección específica dentro de un cono de apertura determinado.
+
+```cpp
+GLfloat posicion[] = {0.0, 5.0, 0.0, 1.0}; // Posición del foco
+GLfloat direccion[] = {0.0, -1.0, 0.0};    // Dirección hacia donde apunta
+ glLightfv(GL_LIGHT0, GL_POSITION, posicion);
+ glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direccion);
+ glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 30.0); // Ángulo de apertura en grados
+ glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 10.0); // Atenuación dentro del cono
+```
+
+- Posee una posición y una dirección. 
+- Ilumina en un cono de apertura definido por `GL_SPOT_CUTOFF`.
+- La intensidad de la luz se degrada desde el centro del cono hacia los bordes según `GL_SPOT_EXPONENT`.
+
+![[Pasted image 20250401130203.png]]
+
+## 2.7.6 Atenuación de la Luz
 Las luces locales y focos pueden perder intensidad con la distancia. OpenGL permite ajustar esto con tres parámetros:
 
 - `GL_CONSTANT_ATTENUATION`: Factor de atenuación constante.
 - `GL_LINEAR_ATTENUATION`: Factor de atenuación lineal.
 - `GL_QUADRATIC_ATTENUATION`: Factor de atenuación cuadrática.
-
 
 ```cpp
 glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 1.0);
@@ -459,156 +464,126 @@ glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.01);
 ```
 
 
-## 2.7.5 Modelos de Sombreado
-OpenGL permite dos modelos de sombreado:
+## 2.7.7 Modelos de Sombreado
+En OpenGL 1.2, el modelo de iluminación se basa en el uso de normales para determinar cómo se refleja la luz en una superficie. A diferencia de otros sistemas que asignan una única normal a una cara, OpenGL permite definir normales en los vértices, permitiendo así diferentes modelos de sombreado. Los modelos principales de sombreado en OpenGL 1.2 son:
 
-- `GL_FLAT`: Un solo color por cara → efectos de bordes marcados.
-- `GL_SMOOTH`: Interpolación de color entre los vértices → transiciones suaves.
+- **Sombreado plano (Flat Shading)**
+- **Sombreado de Gouraud (Gouraud Shading)**
+- **Sombreado de Phong (Phong Shading)** (no implementado directamente en hardware en OpenGL 1.2)
 
-```cpp
-glShadeModel(GL_FLAT);  // Bordes marcados
-glShadeModel(GL_SMOOTH); // Transiciones suaves
+### Sombreado Plano (Flat Shading)
+El sombreado plano es el modelo más simple y eficiente. En este modelo, todo el polígono se representa con un único color, que es calculado usando la normal de una de sus caras.
+
+- **Eficiencia alta**: Solo se calcula un color por cara. 
+- **Menos realista**: No representa bien superficies curvas, ya que los cambios de color entre polígonos son abruptos.
+- **Útil para objetos de apariencia facetada**.
+
+Para habilitar el sombreado plano en OpenGL, se utiliza la función:
+
+```c
+ glShadeModel(GL_FLAT);
 ```
 
+La normal de la cara se puede definir manualmente con `glNormal3fv`, por ejemplo:
 
-## 2.7.6 Resumen General
-
-|Tipo de Luz|Propiedades|Ejemplo de Uso|Consecuencias|
-|---|---|---|---|
-|**Ambiente**|Ilumina toda la escena uniformemente|Luz global de la escena|No genera sombras ni efectos de profundidad|
-|**Direccional**|Rayo de luz paralelo (como el Sol)|Luz solar en juegos|No se atenúa con la distancia|
-|**Local (Puntual)**|Se propaga desde un punto en todas direcciones|Bombilla, lámpara|Se atenúa con la distancia|
-|**Foco**|Luz direccional con un cono de iluminación|Linterna, faro de coche|Efectos de iluminación más realistas|
-## 2.7.8 Chuleta
-Cambiar los valores en los vectores pasados a `glLightfv` afecta cómo se comporta la luz en la escena. Vamos a ver qué ocurre al modificar cada parámetro, con ejemplos y sus consecuencias.
-
-## **1. `GL_AMBIENT` (Luz ambiente)**
-
-```cpp
-GLfloat luz_ambiente[] = {R, G, B, A};
-glLightfv(GL_LIGHT0, GL_AMBIENT, luz_ambiente);
+```c
+ glNormal3fv(normals[1]);
+ glVertex3fv(vertices[1]);
+ glVertex3fv(vertices[5]);
+ glVertex3fv(vertices[6]);
+ glVertex3fv(vertices[2]);
 ```
 
-**Efecto:** Cambia el color y la intensidad de la luz ambiente en la escena.
+![[Pasted image 20250401133854.png]]
+### Sombreado de Gouraud
+El sombreado de Gouraud mejora la suavidad de la iluminación interpolando colores entre los vértices de una cara.
 
-|Valor|Efecto|
-|---|---|
-|`{1.0, 1.0, 1.0, 1.0}`|Luz ambiente blanca brillante (todo se ilumina).|
-|`{0.5, 0.5, 0.5, 1.0}`|Luz grisácea, los objetos se ven menos iluminados.|
-|`{0.0, 0.0, 0.0, 1.0}`|Sin luz ambiente, las sombras serán muy marcadas.|
-|`{1.0, 0.0, 0.0, 1.0}`|Todo tendrá un tono rojo en las zonas sin luz directa.|
+- **Más realista que el sombreado plano**.  
+- **Mayor costo computacional**: Se deben calcular colores en cada vértice y luego interpolarlos.
+- **Funciona bien con superficies curvas**.
 
-**Consecuencia:** Si se pone un valor muy alto, la escena parecerá "lavada" porque no habrá sombras fuertes.
-
-## **2. `GL_DIFFUSE` (Luz difusa)**
-
-```cpp
-GLfloat luz_difusa[] = {R, G, B, A};
-glLightfv(GL_LIGHT0, GL_DIFFUSE, luz_difusa);
+Para habilitar el sombreado de Gouraud:
+```c
+ glEnable(GL_SMOOTH);
+ glShadeModel(GL_SMOOTH);
 ```
 
-**Efecto:** Cambia la iluminación sobre superficies que reciben luz directa.
+El cálculo del color en cada vértice se realiza con normales por vértice:
 
-|Valor|Efecto|
-|---|---|
-|`{1.0, 1.0, 1.0, 1.0}`|Iluminación blanca intensa en áreas expuestas.|
-|`{0.5, 0.5, 0.5, 1.0}`|Iluminación más suave en superficies.|
-|`{0.0, 0.0, 0.0, 1.0}`|No hay iluminación difusa (los objetos no reflejan luz).|
-|`{1.0, 0.0, 0.0, 1.0}`|Las áreas iluminadas serán rojas.|
-
-**Consecuencia:** Si la luz difusa es demasiado baja, los objetos pueden parecer planos y sin volumen.
-
-## **3. `GL_SPECULAR` (Luz especular o reflejos)**
-
-```cpp
-GLfloat luz_especular[] = {R, G, B, A};
-glLightfv(GL_LIGHT0, GL_SPECULAR, luz_especular);
+```c
+ for (i = 0; i < 3; i++) {
+     glNormal3fv(normAvg[i]);
+     glVertex3fv(vertices[i]);
+ }
 ```
 
-**Efecto:** Afecta los reflejos en superficies brillantes.
+**Errores comunes**
+- No normalizar las normales de los vértices. 
+- Usar Gouraud Shading en escenas con iluminación especular fuerte, lo que puede causar efectos visuales incorrectos.
 
-|Valor|Efecto|
-|---|---|
-|`{1.0, 1.0, 1.0, 1.0}`|Reflejos blancos y brillantes (metal o plástico pulido).|
-|`{0.5, 0.5, 0.5, 1.0}`|Reflejos más suaves y naturales.|
-|`{0.0, 0.0, 0.0, 1.0}`|Sin reflejos (parece material mate).|
-|`{1.0, 0.0, 0.0, 1.0}`|Reflejos rojizos en superficies brillantes.|
+![[Pasted image 20250401133911.png]]
+### Sombreado de Phong
+El modelo de sombreado de Phong es una mejora sobre el de Gouraud, en el que en lugar de interpolar colores, se interpolan las normales y luego se calcula la iluminación en cada píxel.
 
-**Consecuencia:** Si se usa un color de especular muy diferente al difuso, los reflejos pueden verse irreales.
+- **Mayor realismo**: Captura mejor los reflejos especulares y las transiciones de luz. 
+- **Mayor costo computacional**: Se deben calcular las normales interpoladas en cada píxel.
 
-## **4. `GL_POSITION` (Posición de la luz)**
 
-```cpp
-GLfloat posicion[] = {X, Y, Z, W};
-glLightfv(GL_LIGHT0, GL_POSITION, posicion);
+OpenGL 1.2 no implementa directamente el sombreado de Phong, por lo que debe hacerse manualmente mediante programación en shaders o interpolación en software.
+
+**Errores comunes**
+- No realizar la interpolación correcta de las normales.
+- Usar el modelo en hardware antiguo sin soporte para cálculo en fragmentos.
+
+
+## 2.7.8 Materiales y Luces
+El color percibido de un objeto depende no solo de su material, sino también de la luz que incide sobre él y de cómo esta se refleja en su superficie.
+
+### Interacción entre la Luz y los Materiales
+Cuando un objeto es iluminado, la luz puede interactuar con su superficie de distintas maneras:
+
+- **Reflexión ambiente**: Es la luz que se dispersa uniformemente en todas direcciones.
+- **Reflexión difusa**: Se basa en la orientación de la superficie respecto a la fuente de luz.
+- **Reflexión especular**: Genera brillos y destaca zonas de reflejo intenso.  
+- **Emisión**: Define si el objeto emite luz propia.
+  
+Por ejemplo, si un objeto es rojo y es iluminado por una luz azul, este se verá negro porque absorbe la luz azul y no refleja ninguna componente roja.
+
+### Parámetros de Material en OpenGL
+OpenGL permite definir materiales usando la función:
+
+```c
+void glMaterial{if}{v}(GLenum face, GLenum pname, TYPE *param);
 ```
 
-**Efecto:** Controla la posición de la luz en la escena.
+Donde:
+- **`face`**: Indica si el material afecta a las caras delanteras (`GL_FRONT`), traseras (`GL_BACK`) o ambas (`GL_FRONT_AND_BACK`).
 
-|Valor|Efecto|
-|---|---|
-|`{0.0, 10.0, 0.0, 1.0}`|Luz sobre la escena, similar al sol en el cielo.|
-|`{10.0, 0.0, 0.0, 1.0}`|Luz a un costado, genera sombras largas.|
-|`{0.0, 0.0, 10.0, 1.0}`|Luz frontal, minimiza sombras.|
-|`{0.0, 0.0, 1.0, 0.0}`|Luz direccional, apunta siempre en una dirección fija.|
+- **`pname`**: Especifica la propiedad a modificar.
+ 
+- **`param`**: Define los valores de la propiedad.
+ 
 
-**Consecuencia:**
+|Propiedad|Descripción|Valor por defecto|
+|---|---|---|
+|`GL_AMBIENT`|Componente ambiental del material|(0.2, 0.2, 0.2, 1.0)|
+|`GL_DIFFUSE`|Componente difusa del material|(0.8, 0.8, 0.8, 1.0)|
+|`GL_SPECULAR`|Reflexión especular del material|(0.0, 0.0, 0.0, 1.0)|
+|`GL_SHININESS`|Controla la concentración del brillo especular|0.0 (rango [0, 128])|
+|`GL_EMISSION`|Color de luz emitida por el objeto|(0.0, 0.0, 0.0, 1.0)|
 
-- Si `W=1.0`, la luz es **puntual** (parecida a un foco).
-- Si `W=0.0`, la luz es **direccional** (como la luz del sol, sin punto de origen).
 
+### Configuración de Material en OpenGL
+Los materiales se definen para que respondan de manera específica a la luz. Ejemplo de configuración de material:
 
-## **5. `GL_SPOT_DIRECTION` (Dirección de un foco)**
+```c
+GLfloat ambient[] = { 0.7, 0.7, 0.7, 1.0 };
+GLfloat diffuse[] = { 0.1, 0.5, 0.8, 1.0 };
+GLfloat specular[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat shininess = 50.0;
 
-```cpp
-GLfloat direccion_foco[] = {X, Y, Z};
-glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direccion_foco);
+glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
+glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+glMaterialf(GL_FRONT, GL_SHININESS, shininess);
 ```
-
-**Efecto:** Define la dirección en la que apunta un foco de luz.
-
-|Valor|Efecto|
-|---|---|
-|`{0.0, -1.0, 0.0}`|Foco que apunta hacia abajo.|
-|`{1.0, 0.0, 0.0}`|Foco que apunta a la derecha.|
-|`{0.0, 0.0, -1.0}`|Foco que apunta hacia el frente.|
-
-**Consecuencia:** Si la dirección no coincide con la posición de la luz, el efecto será extraño.
-
-
-## **6. `GL_SPOT_CUTOFF` (Ángulo del foco)**
-
-```cpp
-glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, angulo);
-```
-
-**Efecto:** Controla qué tan amplio es el cono de luz del foco.
-
-|Valor|Efecto|
-|---|---|
-|`180.0`|Se convierte en una luz normal sin recorte.|
-|`90.0`|Ilumina todo lo que está en un hemisferio.|
-|`30.0`|Cono de luz más cerrado, como una linterna.|
-|`5.0`|Haz de luz muy fino, como un láser.|
-
-**Consecuencia:**
-
-- Si el ángulo es **muy grande**, la luz parece una luz normal.
-- Si el ángulo es **muy pequeño**, puede que la luz sea difícil de ver.
-
-
-## **7. `GL_SPOT_EXPONENT` (Intensidad del foco)**
-
-```cpp
-glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, valor);
-```
-
-**Efecto:** Controla qué tan fuerte es la luz en el centro del cono.
-
-|Valor|Efecto|
-|---|---|
-|`0`|La luz es uniforme dentro del cono.|
-|`10`|Más brillante en el centro, se atenúa hacia los lados.|
-|`100`|Muy concentrada en el centro, los bordes casi no iluminan.|
-
- **Consecuencia:** Un valor alto simula una linterna potente con un centro más brillante.

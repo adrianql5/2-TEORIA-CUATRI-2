@@ -623,3 +623,158 @@ glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(proj));
 
 - `glGetUniformLocation(shaderProgram, "nombre_uniform")`: Busca la variable en el shader.
 - `glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(matrix))`: Envía la matriz a la GPU.
+
+# 3.9 Iluminación
+En OpenGL 1.2, la iluminación se manejaba con funciones predefinidas como `glLightfv()` o `glMaterialfv()`. Sin embargo, en OpenGL 3.3, estas funciones han sido eliminadas y toda la iluminación se debe calcular manualmente mediante **shaders**. Esto significa que:
+
+- **El vertex shader** se encarga de procesar las normales y posiciones de los objetos.
+- **El fragment shader** realiza los cálculos de iluminación y color.
+
+
+## 3.9.1 Tipos de iluminación
+### **1. Iluminación ambiental**
+Es una luz uniforme que **no tiene dirección específica**. Simula la luz reflejada por el entorno e ilumina todos los objetos por igual.
+
+**Implementación en el fragment shader:**
+- Se define un color de luz ambiental.
+- Se multiplica por el color del objeto para determinar su resultado final.
+
+```glsl
+out vec4 FragColor;
+uniform vec3 objectColor;
+uniform vec3 ambientLight;
+
+void main() {
+    vec3 result = objectColor * ambientLight;  
+    FragColor = vec4(result, 1.0);  
+}
+```
+
+### **2. Iluminación difusa**
+Este tipo de luz proviene de una dirección específica y se **distribuye en todas direcciones tras impactar** en la superficie del objeto. La cantidad de luz reflejada depende del **ángulo de incidencia** de la luz sobre la superficie.
+
+**Cálculo:**
+
+- Se normalizan las **normales del objeto**.
+- Se calcula el **producto escalar (dot product)** entre la normal y la dirección de la luz.
+- Si el resultado es negativo, la luz no debe iluminar esa parte.
+
+
+**Vertex Shader para luz difusa**
+```glsl
+out vec3 FragPos;
+out vec3 Normal;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+in vec3 aPos;
+in vec3 aNormal;
+
+void main() {
+    FragPos = vec3(model * vec4(aPos, 1.0));  
+    Normal = mat3(transpose(inverse(model))) * aNormal;  
+    gl_Position = projection * view * vec4(FragPos, 1.0);  
+}
+```
+
+**Fragment Shader para luz difusa**
+```glsl
+out vec4 FragColor;
+in vec3 FragPos;
+in vec3 Normal;
+
+uniform vec3 lightPos;
+uniform vec3 lightColor;
+uniform vec3 objectColor;
+
+void main() {
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(lightPos - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = diff * lightColor;
+    
+    vec3 result = (diffuse + 0.1) * objectColor;
+    FragColor = vec4(result, 1.0);
+}
+```
+
+### **3. Iluminación especular**
+Este tipo de iluminación simula **brillos** en la superficie de un objeto debido a un **foco de luz**. Depende de la posición de la luz y del observador.
+
+**Cálculo:**
+- Se obtiene la **dirección de la luz** y el **ángulo de incidencia**.
+- Se calcula la **dirección reflejada** de la luz usando la función `reflect()`.
+- Se calcula el **producto escalar** entre la dirección reflejada y la dirección del observador.
+- Se eleva el resultado a una potencia (factor de especularidad) para definir qué tan "brillante" es el reflejo.
+
+**Fragment Shader para luz especular**
+```glsl
+out vec4 FragColor;
+in vec3 FragPos;
+in vec3 Normal;
+
+uniform vec3 lightPos;
+uniform vec3 viewPos;
+uniform vec3 lightColor;
+uniform vec3 objectColor;
+
+void main() {
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(lightPos - FragPos);
+    
+    // Cálculo de la luz difusa
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = diff * lightColor;
+    
+    // Cálculo de la luz especular
+    vec3 viewDir = normalize(viewPos - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 128.0);
+    vec3 specular = spec * lightColor;
+    
+    // Resultado final
+    vec3 result = (diffuse + specular + 0.1) * objectColor;
+    FragColor = vec4(result, 1.0);
+}
+```
+
+### **4. Luz en cono (Spotlight)**
+Para simular un **foco direccional** (como una linterna), se agrega una condición para limitar la iluminación solo a una región específica.
+
+**Cálculo:**
+- Se define un **ángulo de apertura** para el cono de luz.
+- Se calcula si el fragmento se encuentra dentro del cono mediante el **producto escalar**.
+- Si está fuera del cono, la luz no afecta al objeto.
+
+**Fragment Shader para luz en cono**
+```glsl
+out vec4 FragColor;
+in vec3 FragPos;
+in vec3 Normal;
+
+uniform vec3 lightPos;
+uniform vec3 lightDir;
+uniform float cutoffAngle;
+uniform vec3 lightColor;
+uniform vec3 objectColor;
+
+void main() {
+    vec3 norm = normalize(Normal);
+    vec3 lightDirection = normalize(lightPos - FragPos);
+    
+    // Producto escalar para comprobar si está dentro del cono
+    float theta = dot(lightDirection, normalize(-lightDir));
+    float epsilon = cutoffAngle;  
+
+    if (theta > cos(radians(epsilon))) {  // Solo iluminar dentro del cono
+        float diff = max(dot(norm, lightDirection), 0.0);
+        vec3 diffuse = diff * lightColor;
+        vec3 result = (diffuse + 0.1) * objectColor;
+        FragColor = vec4(result, 1.0);
+    } else {
+        FragColor = vec4(0.0);  // No iluminar si está fuera del cono
+    }
+}
+```
