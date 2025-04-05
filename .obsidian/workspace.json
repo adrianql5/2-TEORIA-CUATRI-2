@@ -4,67 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "8fa13153a3e108f1",
+        "id": "c56a5e7092387d4b",
         "type": "tabs",
         "children": [
           {
-            "id": "1993c5f7a5f36086",
+            "id": "605dd6f87ec91515",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AQRCOMP/1. Sistemas Multinúcleo.md",
+                "file": "BDII/4. Control de Concurrencia.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Sistemas Multinúcleo"
-            }
-          },
-          {
-            "id": "a12ca90fb88d9d0d",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "AQRCOMP/archivos/bibliografia/BitacorasARQCOMP_180222231655.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "BitacorasARQCOMP_180222231655"
+              "title": "4. Control de Concurrencia"
             }
           }
         ]
-      },
-      {
-        "id": "cfe54ec2bb55c943",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "e070786ca6f3c381",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "AQRCOMP/archivos/bibliografia/AC_Notas_Clase_Tema1_12_13.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "AC_Notas_Clase_Tema1_12_13"
-            }
-          },
-          {
-            "id": "896605c64479db47",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Tema1-24-25"
-            }
-          }
-        ],
-        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -121,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "fe6223fe8f51cf24",
@@ -211,32 +167,38 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "896605c64479db47",
+  "active": "605dd6f87ec91515",
   "lastOpenFiles": [
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf",
-    "AQRCOMP/archivos/bibliografia/AC_Notas_Clase_Tema1_12_13.pdf",
-    "AQRCOMP/archivos/bibliografia/BitacorasARQCOMP_180222231655.pdf",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250403161442.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250403161418.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250403154222.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250403154035.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250403153030.png",
-    "COGA/archivos/imagenes/Pasted image 20250330163533.png",
-    "COGA/archivos/imagenes/Pasted image 20250330164248.png",
-    "COGA/archivos/imagenes/Pasted image 20250330164030.png",
-    "COGA/archivos/imagenes/Pasted image 20250330164013.png",
+    "archivos/imagenes/Pasted image 20250404133046.png",
+    "archivos/imagenes/Pasted image 20250404133026.png",
+    "archivos/imagenes/Pasted image 20250404132806.png",
+    "archivos/imagenes/Pasted image 20250404132601.png",
+    "archivos/imagenes/Pasted image 20250404132035.png",
+    "Informe P3.md",
     "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf",
     "SOII/1. Comunicación y Sincronización entre Procesos (IPC).md",
+    "DESOFT/archivos/bibliografia/apuntes deseño.pdf",
+    "DESOFT/archivos/imagenes/Pasted image 20250404174537.png",
+    "DESOFT/8. Patrones de Creación.md",
+    "DESOFT/archivos/imagenes/Pasted image 20250404173912.png",
+    "DESOFT/7. Patrones de Diseño.md",
+    "DESOFT/6. Otros Diagramas de Modelado.md",
+    "archivos/imagenes",
+    "archivos",
+    "DESOFT/5. Modelado Estructural Avanzado.md",
+    "DESOFT/4. Modelado de Comportamiento.md",
+    "AQRCOMP/archivos/bibliografia/AC_Notas_Clase_Tema1_12_13.pdf",
+    "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf",
+    "AQRCOMP/archivos/bibliografia/BitacorasARQCOMP_180222231655.pdf",
+    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250403173413.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250403161442.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250403161418.png",
     "COGA/Programar en 1.2.md",
     "COGA/5. Tema 5.md",
     "COGA/Programar en 3.3.md",
     "COGA/archivos/bibliografia/BitacorasCOGA_180222231744.pdf",
-    "COGA/archivos/imagenes/Pasted image 20250401133911.png",
-    "Sin título.md",
     "COGA/4. Tema 4.md",
-    "archivos/imagenes",
-    "archivos",
     "COGA/3. TEMA 3.md",
     "COGA/2. TEMA 2.md",
     "BDII/archivos/bibliografia/ApuntesBBDD2_180519160719.pdf",
@@ -245,18 +207,12 @@
     "BDII/3. Transacciones.md",
     "BDII/2. Seguridad.md",
     "BDII/1. SQL Avanzado.md",
-    "BDII/archivos/bibliografia/bases_datos.pdf",
     "SOII/5. Bash Cheatsheet.md",
-    "DESOFT/4. Modelado de Comportamiento.md",
     "DESOFT/3. Modelado Estructural.md",
     "DESOFT/2. Modelado de Casos de Uso.md",
     "DESOFT/1. Introducción a UML.md",
     "COGA/Sin título 1.md",
     "Practica4 XEFE.md",
-    "P1InformeSOIIAdrianQuirogaLinares.md",
-    "README.md",
-    "COGA/1. TEMA 1.md",
-    "FINISTERRAE III.md",
-    "foro6.md"
+    "P1InformeSOIIAdrianQuirogaLinares.md"
   ]
 }
