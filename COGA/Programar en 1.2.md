@@ -587,3 +587,129 @@ glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
 glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
 glMaterialf(GL_FRONT, GL_SHININESS, shininess);
 ```
+
+
+# 2.8 Texturas
+
+### **Habilitar el mapeado de texturas**
+Antes de cualquier dibujo:
+```c
+glEnable(GL_TEXTURE_2D);
+```
+
+> Para dejar de usar textura en un momento puntual:
+
+```c
+glDisable(GL_TEXTURE_2D);
+```
+
+> También se puede "no usar ninguna" sin deshabilitar:
+
+```c
+glBindTexture(GL_TEXTURE_2D, 0);
+```
+
+### **Generar un índice para la textura**
+Creamos un ID de textura (como un puntero o referencia):
+
+```c
+GLuint textura;
+glGenTextures(1, &textura);
+```
+
+### **Cargar la imagen (desde fichero, no procedural)**
+Necesitas una librería como `stb_image`:
+```c
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h> // cuidado con el nombre correcto: no std_image.h
+
+int width, height, nrChannels;
+unsigned char *data = stbi_load("nombre_de_la_imagen.jpg", &width, &height, &nrChannels, 0);
+```
+
+### **Vincular la textura y establecer sus parámetros**
+```c
+glBindTexture(GL_TEXTURE_2D, textura);
+
+// Repetir textura si se pasa del rango [0,1]
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+// Filtrado (mejor calidad o rendimiento)
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+```
+
+### **Subir la imagen como textura a la GPU**
+```c
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0,
+             GL_RGB, GL_UNSIGNED_BYTE, data);
+```
+
+> ⚠️ Solo usar `GL_RGB` si tu imagen no tiene canal alfa. Si tiene transparencia, usar `GL_RGBA`.
+
+
+### **Liberar memoria del sistema**
+```c
+stbi_image_free(data);
+```
+
+### **Asignar la textura antes de dibujar**
+```c
+glBindTexture(GL_TEXTURE_2D, textura);
+```
+
+
+### **Dibujar con coordenadas de textura**
+```c
+glBegin(GL_QUADS);
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 0.0f);
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, 0.0f);
+    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, 0.0f);
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, 0.0f);
+glEnd();
+```
+
+> 📌 Las coordenadas `(u, v)` siempre están en el rango `[0, 1]`.
+
+## Uso de listas de display
+Para asociar una textura a un objeto que dibujas con `glCallList(lista)`:
+
+```c
+glBindTexture(GL_TEXTURE_2D, objeto.textura);
+glCallList(objeto.lista);
+```
+
+### Ejemplo completo de carga de textura
+
+```c
+int myCargaTexturas(char *nome) {
+    int textura;
+    glGenTextures(1, &textura);
+    glBindTexture(GL_TEXTURE_2D, textura);
+
+    int width, height, nrChannels;
+    unsigned char *data = stbi_load(nome, &width, &height, &nrChannels, 0);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0,
+                 GL_RGB, GL_UNSIGNED_BYTE, data);
+
+    stbi_image_free(data);
+    return textura;
+}
+```
+
+### Si tienes dos texturas (ejemplo suelo y pared)
+
+```c
+glBindTexture(GL_TEXTURE_2D, suelo.textura);
+glCallList(suelo.lista);
+
+glBindTexture(GL_TEXTURE_2D, pared.textura);
+glCallList(pared.lista);
+```
