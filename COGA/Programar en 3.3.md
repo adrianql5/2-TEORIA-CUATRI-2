@@ -778,3 +778,140 @@ void main() {
     }
 }
 ```
+
+
+# 3.10 Texturas
+## 3.10.1 Cargar la textura
+Usando `stb_image.h`:
+
+```cpp
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
+```
+
+```cpp
+unsigned int texture;
+glGenTextures(1, &texture);
+glBindTexture(GL_TEXTURE_2D, texture);
+
+// Parámetros de la textura
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+// Cargar la imagen
+int width, height, nrChannels;
+unsigned char *data = stbi_load("imagen.png", &width, &height, &nrChannels, 0);
+if (data) {
+    GLenum format = GL_RGB;
+    if (nrChannels == 1) format = GL_RED;
+    else if (nrChannels == 4) format = GL_RGBA;
+
+    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+} else {
+    std::cout << "Error al cargar textura" << std::endl;
+}
+stbi_image_free(data);
+```
+
+## 3.10.2 Shaders
+
+### Vertex Shader
+
+```glsl
+#version 330 core
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aNormal;
+layout (location = 2) in vec2 aTexCoord;
+
+out vec2 TexCoord;
+
+uniform mat4 transform;
+
+void main() {
+    gl_Position = transform * vec4(aPos, 1.0);
+    TexCoord = aTexCoord;
+}
+```
+
+### Fragment Shader
+
+```glsl
+#version 330 core
+in vec2 TexCoord;
+
+uniform sampler2D texture1;
+
+out vec4 FragColor;
+
+void main() {
+    FragColor = texture(texture1, TexCoord);
+}
+```
+
+## 3.10.3 Enlazar la textura y dibujar
+Antes de dibujar:
+
+```cpp
+glActiveTexture(GL_TEXTURE0);               // Activar unidad 0
+glBindTexture(GL_TEXTURE_2D, texture);      // Bind de la textura
+shader.use();                               // Usar el shader
+shader.setInt("texture1", 0);               // Enviar sampler al shader
+```
+
+Y luego dibujas con VAO + draw:
+```cpp
+glBindVertexArray(VAO);
+glDrawArrays(GL_TRIANGLES, 0, numVertices);
+```
+
+## 3.10.4 Multitextura (opcional)
+OpenGL 3.3 permite **usar varias texturas a la vez**:
+
+```cpp
+glActiveTexture(GL_TEXTURE0);
+glBindTexture(GL_TEXTURE_2D, texture1);
+
+glActiveTexture(GL_TEXTURE1);
+glBindTexture(GL_TEXTURE_2D, texture2);
+
+// En shader:
+uniform sampler2D texture1;
+uniform sampler2D texture2;
+```
+
+## 3.10.5 Transparencia y canal Alpha
+Para PNG o GIF con transparencia (canal alpha), asegúrate de:
+- Usar `GL_RGBA` al cargar la textura.
+- Habilitar blending:
+
+```cpp
+glEnable(GL_BLEND);
+glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+```
+
+Esto mezcla el color del objeto con el fondo según el canal alpha.
+
+
+## Detalles de parámetros de textura
+- `GL_TEXTURE_WRAP_S/T`: Qué hacer cuando las coordenadas son mayores a 1 o menores que 0. 
+    - `GL_REPEAT`: repite la textura.
+    - `GL_CLAMP_TO_EDGE`: estira el borde.
+
+- `GL_TEXTURE_MIN_FILTER / MAG_FILTER`: Qué hacer cuando hay escalado.
+    - `GL_LINEAR`: interpolación.
+    - `GL_NEAREST`: sin interpolación, efecto pixelado.
+
+
+## Resumen visual
+
+|Elemento|OpenGL 1.2|OpenGL 3.3|
+|---|---|---|
+|Envío de textura|`glTexImage2D(...)`|Igual, pero puedes usar mipmaps|
+|Coordenadas de textura|`glTexCoord2f(...)`|Atributo `aTexCoord`, buffer|
+|Activación de textura|`glBindTexture(...)`|Igual, pero puedes usar `glActiveTexture`|
+|Shaders|❌|✅ Obligatorio|
+|Multitextura|Limitado|Muy flexible con unidades|
+|Transparencia|Alpha Test|Blending con `glBlendFunc`|

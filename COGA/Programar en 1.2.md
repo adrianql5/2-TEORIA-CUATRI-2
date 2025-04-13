@@ -644,7 +644,19 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 ```c
 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0,
              GL_RGB, GL_UNSIGNED_BYTE, data);
+
+glTextImage(GLenum objetivo, GLint nive, GLint componentes, GLsizei ancho, GLsizei alto, GLint borde, GLenum formato, GLenum tipo, const Glvoid *pixels) 
 ```
+
+- **Objetivo:** define que textura hay que definir y debe ser GL_TEXTURE_23
+- **Nivel:** Indica el nivel de datalle de las texturas y es normalmente 0
+- **Componenetes:** Inidca el número de componentes de color usados en cada píxel
+- **Ancho:** especifica la anchura de la textura. Debe ser potencia entera de 2
+- **Alto**: especifica la anchura de la textura. Debe ser potencia entera de 2
+- **Borde:** controla el número de pixels de borde que OpenGl usará
+- **FOrmato:** indica el tipo de valores de color esperados
+- **Tipo:** indica el tipo de la variables que almacena los valores de color por píxel
+- **Pixels:** puntero a la variable que almacena los colores por pixel.
 
 > ⚠️ Solo usar `GL_RGB` si tu imagen no tiene canal alfa. Si tiene transparencia, usar `GL_RGBA`.
 
