@@ -1,4 +1,4 @@
-# 3.1 Crear una ventana
+# 1 Crear una ventana
 ``` C++
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -69,849 +69,296 @@ int main() {
 }
 ``` 
 
-# 3.2 Shaders
-Un **shader** es un programa pequeño que se ejecuta en la **GPU** para procesar gráficos en tiempo real. Su principal objetivo es manipular la apariencia de los objetos en la pantalla, permitiendo efectos visuales como iluminación, sombras, reflejos, desenfoques, entre otros.
+# 2 Modelado
+## 2.1 Tipos de Shaders
+**Vertex Shader (VS)**:
+- Posición del vértice del triángulo + otros datos (coordenadas de textura, normal, color, etc).
+- Vértice con su posición transformada + (opcionalmente) otros atributos (normal, color, etc.) que se envían al siguiente paso en la pipeline
 
-Los shaders son esenciales en **OpenGL**, **Vulkan**, **DirectX**, y otros motores gráficos, ya que permiten a los programadores personalizar cómo se renderizan los objetos en la pantalla.
+**Fragment Shader (FS)**:
+- Información del fragmento a procesar, que puede incluir datos interpolados desde los vértices (coordenadas de textura, normal, color, etc)
+- Calcula el color final del píxel si este se debe representar en pantalla.
 
-Los shaders se escriben en **GLSL** (OpenGL Shading Language), un lenguaje de programación específico para la GPU.
+**Procesos posteriores:** 
+- Z-BUFFER: controla la profundidad de los pixeles para manejar la superposición de objetos en la escena.
+- Alpha Test: determina si un objeto debe renderizarse en función de su transparencia
+- Blending Test.
+![[Pasted image 20250430104625.png]]
+## 2.2 Envío de Vértices
+Para generar figuras en OpenGl 3.3 se usan **Vertex Array Objet**, que almacenan toda la información del objeto a dibujar.
+Los VAOs están formados por **Vertex Buffer Objects** (VBOs), que almacenan información relativa a los vértices, colores, normales, etc.
 
+```C++
+void medianteArray() {
 
-## 3.2.1 Vertex Shader
-Se encarga de procesar los **vértices** de los objetos en la escena.
-Convierte las coordenadas del modelo 3D a coordenadas en pantalla.
-Maneja atributos de los vértices como:
-    - **Posición** en el espacio 3D.
-    - **Color** del vértice.
-    - **Coordenadas de textura** (para aplicar imágenes a los modelos).
-    - **Normales** (para iluminación).
+    float vertices[] = { 0.0f, 0.0f, 0.0f, // x
+                         .5f, 0.0f, 0.0f,  // x
+                         0.0f, .5f, 0.0f   // x, y, z
+                       };
 
-**Flujo de trabajo:**
-1. Recibe los vértices de un objeto.
-2. Aplica transformaciones para colocarlos en el espacio de la pantalla.
-3. Envía los datos procesados al siguiente paso en la renderización.
+    // Se crea el vector de floats que recoge los vértices
 
-🔹 **Ejemplo de un Vertex Shader en GLSL:**
+    GLuint VAO;
+    glGenVertexArrays(1, &VAO);
+    glBindVertexArray(VAO);
+    // Se genera el VAO
+    // Se activa el VAO, de manera que las funciones invocadas 
+    // posteriormente afectarán a dicho VAO
 
-```glsl
-#version 330 core
+    GLuint VBO;
+    glGenBuffers(1, &VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    // Se genera el buffer donde se almacenarán los vértices
+    // Se activa el buffer, de manera que las funciones
+    // invocadas posteriormente afectarán a dicho buffer
 
-layout (location = 0) in vec3 aPos;  // Entrada: posición del vértice
-layout (location = 1) in vec3 aColor; // Entrada: color del vértice
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    // Se asigna el vector de vértices al buffer y al VAO que están “escuchando” 
+    // y se detalla el modo de dibujo
 
-out vec3 vertexColor; // Pasamos el color al fragment shader
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // Se especifica el número que identifica al atributo “vértices”, cuántos elementos 
+    // del vector compone un vértice, la distancia de salto al próximo y dónde empieza el 
+    // primer vértice, entre otras cosas
+    // Se activa el buffer con el atributo “vértices” para su uso
 
-void main() {
-    gl_Position = vec4(aPos, 1.0); // Transformamos el vértice
-    vertexColor = aColor; // Pasamos el color al Fragment Shader
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+    // Se desactiva el buffer (ya no “escucha” modificaciones)
+    // Se desactiva el VAO (ya no “escucha” modificaciones)
 }
-```
-
-🔹 **Explicación del código:**
-
-- `aPos`: Recibe la posición del vértice desde la CPU.
-- `aColor`: Recibe el color del vértice desde la CPU.
-- `gl_Position`: Devuelve la posición del vértice transformada.
-- `vertexColor`: Se pasa al Fragment Shader para el color final.
-
-
-## 3.2.2 Fragment Shader
-- Se ejecuta después del **Vertex Shader** y trabaja con **fragmentos**.
-- Un **fragmento** es un posible píxel en la pantalla (incluye color, profundidad, etc.).
-- Calcula el **color final** que se dibujará en cada píxel.
-- Es donde se aplican efectos como:
-    - **Iluminación**
-    - **Texturas**
-    - **Sombreado**
-    - **Reflejos**
-
-🔹 **Flujo de trabajo:**
-1. Recibe información interpolada de los vértices.
-2. Determina el color final del píxel en pantalla.
-3. Envía el color a la tarjeta gráfica para dibujarlo.
-
-🔹 **Ejemplo de un Fragment Shader en GLSL:**
-
-```glsl
-#version 330 core
-
-in vec3 vertexColor; // Color del Vertex Shader
-
-void main() {
-    gl_FragColor = vec4(vertexColor, 1.0); // Asigna el color al píxel
-}
-```
-
-🔹 **Explicación del código:**
-
-- `vertexColor`: Recibe el color interpolado desde el Vertex Shader.
-- `FragColor`: Devuelve el color final del píxel a la pantalla.
-
-## 3.2.3 ¿Qué ocurre después del Fragment Shader?
-**Alpha Test**
-- Verifica la transparencia del píxel.
-- Si el píxel es completamente transparente, no se dibuja.
-
-**Blending Test**
-- Se usa para mezclar colores (por ejemplo, hacer un objeto semi-transparente).
-- Se calcula combinando el color del fragmento con el color del fondo.
-
-**Depth Test**
-- OpenGL verifica si el fragmento está **más cerca o más lejos** de la cámara comparado con otros píxeles.
-- Si el fragmento está detrás de otro, se descarta.
-
-| **Shader**          | **¿Qué procesa?**    | **Propósito**                                             |
-| ------------------- | -------------------- | --------------------------------------------------------- |
-| **Vertex Shader**   | Vértices             | Transforma posiciones, colores, y coordenadas de textura. |
-| **Fragment Shader** | Fragmentos (píxeles) | Calcula el color final de cada píxel en pantalla.         |
-
-# 3.3 Como se envían los vértices
-Aquí no tenemos el `glVertex3f`, pero es ineficiente porque le mandamos de uno en uno los vértices a la GPU. Ahora tenemos que almacenar los vértices en **buffers** en la GPU y se envían de manera más eficiente. Usamos el **VAO** y el **VBO**.
-
-## 3.3.1 VAO (vertex array object)
-Es un **contenedor** que guarda la configuración de los datos de los vértices. Es como una carpeta donde OpenGl guarda de los datos de los vértices para usarlos más tarde. Esto permite **organizar y reutilizar datos** sin definirlos varias veces. **Solo creamos un VAO una vez y lo usamos cada vez que queremos dibujar el mismo objeto**.
-
-## 3.3.2 VBO (vertex buffer object)
-Es un **buffer** en la GPU que almacena los datos de los vértices. Es como un archivo del VAO que contiene la info de los vertices. En lugar de enviar los vértices uno a uno, los **almacenamos en un VBO**. Esto acelera el renderizado porque la información ya está en la memoria de la gpu.
-
-## 3.3.3 Procedimiento
-
-```C++
-float vertices []={
-	0.0f,0.0f,0.0f, //V1
-	0.5f,0.0f,0.0f, //V2
-	0.0f,0.5f,0.0f //V3            
-}
-```
-
-Definimos vertices en un array de floats
-
-1. **Creamos un VAO**
-```C++
-unsigned int VAO;
-glGenVertexArrays(1, &VAO); 
-glBindVertexArray(VAO);
-```
-- `glGenVertexArrays(1, &VAO); ` crea un **VAO** y le asigna un **ID**
-- `glBindVertexArray(VAO);` activa el **VAO**.
-
-2. **Creamos un BVO**
-```C++
-unsigned int VBO;
-glGenBuffers(1, &VBO);
-glBindBuffer(GL_ARRAY_BUFFER, VBO);
-glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-``` 
-- `glGenBuffers(1, &VBO);` crea un **VBO** y le asigna un **ID**.
-- `glBindBuffer(GL_ARRAY_BUFFER, VBO);` activa el **VBO** para que OpenGl lo use.
-- `glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);` copia los datos del array de **vértices** a la memoria de la GPU. GL_STATIC_DRAW le dice a OpenGl que los datos no van a cambiar.
-
-3. **Configuramos los atributos de los vértices**
-```C++
-glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-glEnableVertexAttribArray(0);
 ``` 
 
-- `glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);`
-	- Define como OpenGL debe **interpretar** los datos del VBO
-	- `0` → Número del atributo (posición del vértice). Basicamente le decimos al VAO que la posicion de los vertices se almacena en el atributo 0.
-    - `3` → Cada vértice tiene **3 valores (X, Y, Z)**.
-    - `GL_FLOAT` → Los valores son de tipo `float`.
-    - `GL_FALSE` → No necesitamos normalizar los valores.
-    - `3 * sizeof(float)` → Tamaño de cada vértice en la memoria.
-    - `(void*)0` → La información empieza desde el inicio del array.
-- `glEnableVertexAttribArray(0);`
-    - Activa el **atributo de vértices** número `0` (posición).
+```C++
+    glUseProgram(shaderProgram);
+    //Se indica cuál es el Program Shader a emplear
 
-## 3.3.4 Shaders
-Los vertices se envían al pipe.
->[!Nota]
-> **Pipeline Gráfico** es el proceso por el cual la tarjeta gráfica (GPU) convierte los datos de los vértices en una imagen final en la pantalla.
->
->🔹 **Piensa en el pipeline gráfico como una fábrica**:
->
->1. **Recibe datos** (vértices de un objeto).
->2. **Los procesa** (con shaders).
->3. **Dibuja los píxeles en la pantalla**.
->
->Cada paso del **pipeline** tiene un **shader**, que es un programa que se ejecuta en la GPU. Las principales etapas son el **vertex shader** y el **fragment shader**.
+    glBindVertexArray(VAO);
+    //El VAO especificado “se pone a la escucha” (se activa)
 
-En primer lugar pasan al **Vertex Shader** donde se calcula la posición de los vértices en la pantalla.
-```glsl
-#version 330 core //Esto indica que usamos openGl 3.3
+    glDrawArrays(GL_LINES, 0, 6);
+    //Se dibujan las aristas del objeto especificando desde dónde empezar y el número de vértices a dibujar del VAO
 
-layout (location = 0) in vec3 aPos;  // Entrada: posición del vértice
+    glBindVertexArray(0);
+    //Se desactiva el VAO para su uso (ya no “escucha”)
 
-void main() {
-    gl_Position = vec4(aPos, 1.0); // Transformamos el vértice
-}
 ```
 
-- `#version 330 core`
-	- Indica que estamos usando **OpenGL 3.3**.
-	- La sintaxis y las funciones disponibles dependen de la versión de OpenGL.
+Si se trabaja con más de un atributo (por ejemplo, se añaden colores):
+```C++
+void medianteArray() {
 
-- `layout (location = 0) in vec3 aPos;`
-	- **`layout (location = 0)`** → Indica que la información de los vértices **viene desde el VAO en la posición 0**.
-	- **`in vec3 aPos;`** → Declara una variable de **entrada** que recibe un **vector de 3 valores (X, Y, Z)**.
+    // Se crea el vector de floats que recoge los vértices y los colores
+    float vertices[] = {
+        // Vértices               // Colores
+         0.f, 0.f, 0.f,           1.f, 1.f, 0.f, // Vértice 0: posición, color amarillo
+         .5f, 0.f, 0.f,           0.f, 0.f, 1.f, // Vértice 1: azul
+         .5f, .5f, 0.f,           0.f, 1.f, 0.f, // Vértice 2: verde
+         0.f, .5f, 0.f,           1.f, 0.f, 0.f, // Vértice 3: rojo
+        -.5f, .5f, 0.f,           1.f, 1.f, 1.f, // Vértice 4: blanco
+        -.5f, 0.f, 0.f,           0.f, 0.f, 0.f, // Vértice 5: negro
+        -.5f, -.5f, 0.f,          0.f, 1.f, 1.f, // Vértice 6: cian
+         0.f, -.5f, 0.f,          .5f, 1.f, 0.f  // Vértice 7: mitad de 1,1,1
+    };
 
-- `gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);`
-	- `gl_Position` es una **variable especial** de salida que indica la **posición final del vértice en la pantalla**.
-	- **`vec4(aPos.x, aPos.y, aPos.z, 1.0)`** convierte el `vec3` en `vec4` agregando un `1.0` extra (para cálculos de perspectiva).
+    GLuint VAO;
+    glGenVertexArrays(1, &VAO);
+    glBindVertexArray(VAO);
 
+    GLuint VBO;
+    glGenBuffers(1, &VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-**Este shader no cambia la posición de los vértices**, simplemente los pasa tal cual. Más adelante, podemos hacer transformaciones (escalado, rotación, traslación) aquí.
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-Posteriomente pasamos al **fragment shader**, que colorea los píxeles.
+    // Se genera el primer atributo ("vértices"), identificado con 0, indicando cuántos elementos
+    // del vector compone un vértice, el salto al siguiente vértice y dónde empieza el primer vértice.
+    // Posteriormente, se activa este atributo para su uso.
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    // Se genera el primer atributo ("colores"), identificado con 1, indicando cuántos elementos
+    // del vector compone un color, el salto al siguiente color y dónde empieza el primer color.
+    // Posteriormente, se activa este atributo para su uso.
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+
+    glDeleteBuffers(1, &VBO);
+
+    glUseProgram(shaderProgram);
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_LINES, 0, 8);
+}
+``` 
+
+Para evitar escribir varias veces el mismo vértice, se pueden emplear **vértices indexados**, para lo cual se requiere un vector de índices:
+
+```c++
+void medianteArray() {
+
+    float vertices[] = {
+        0.0f, 0.0f, 0.0f, // 0
+        .5f, 0.0f, 0.0f,  // x
+        0.5f, .5f, 0.0f,  // y
+        0.0f, 0.5f, .5f   // z
+    };
+
+    unsigned int indices[] = { 0, 1, 0, 2, 0, 3 };
+    // Se genera el vector de índices, que recoge el orden en el que se recorren los vértices
+
+    GLuint VAO;
+    glGenVertexArrays(1, &VAO);
+    glBindVertexArray(VAO);
+
+    GLuint VBO, EBO;
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    // Se generan los buffers donde se almacenarán los vértices e índices, respectivamente
+
+    // Se activa el buffer de vértices y se especifica el vector al que referencia
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // Se activa el buffer de índices y se especifica el vector al que referencia
+    // (ELEMENT_ARRAY_BUFFER indica que se trata de un array de índices)
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glBindVertexArray(0);
+}
+
+    glUseProgram(shaderProgram);
+    glBindVertexArray(VAO);
+    glDrawElements(GL_LINES, 6, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
+
+    // La función de dibujo es diferente con indexación
+
+```
+
+## 2.3 Gestión de Vértices
+Los vértices especificados en un VAO se almacenan en la pipeline y posteriormente son gestionados en el VS y FS, que se almacenan como archivos de texto en el directorio de uso. 
+El código de un VS podría ser el siguiente: 
 ```glsl
 #version 330 core
-out vec4 FragColor; // Salida: color del fragmento
-
-void main() {
-    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f); // Color RGBA (Rojo-Naranja)
-}
-```
-
-- `#version 330 core`
-	- Igual que en el Vertex Shader, indica que estamos usando **OpenGL 3.3**.
-
-- `out vec4 FragColor;`
-	- Declara una **variable de salida** que representa el **color del píxel**.
-	- **`vec4`** tiene **4 valores**: `(Red, Green, Blue, Alpha)`.
-
-- `FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);`
-	- Asigna un color **naranja** `(R = 1.0, G = 0.5, B = 0.2, A = 1.0)`.
-	- **El valor Alpha (`A`) indica transparencia**, pero en este caso es `1.0` (completamente opaco).
-
-
-# 3.4 Usar Shaders
-## 3.4.1 Cargar y Compilar Shaders desde Archivos
-El profe nos da la función `setShaders()` se encarga de **leer el código de los shaders desde archivos externos**, lo que permite mantenerlos organizados fuera del código principal.
-1. Se **leen los archivos** (`textFileRead(nVertx)` y `textFileRead(nFrag)`) para obtener los códigos de los shaders.
-2. Se **crean los identificadores** con `glCreateShader(GL_VERTEX_SHADER)` y `glCreateShader(GL_FRAGMENT_SHADER)`.
-3. Se **asigna el código fuente** de los shaders con `glShaderSource()`.
-4. Se **compilan los shaders** con `glCompileShader()`.
-
-
-## 3.4.2 Crear el Programa de Shaders
-Una vez compilados, los shaders se deben **unir en un programa** que la GPU pueda ejecutar:
-1. Se **crea un programa de shaders** con `glCreateProgram()`.
-2. Se **adjuntan** los shaders con `glAttachShader()`.
-3. Se **enlaza el programa** con `glLinkProgram()`, combinando los shaders en un único ejecutable.
-4. Se verifica si hay errores con `printProgramInfoLog()`.
-
-## 3.4.3 Usar el Programa de Shaders
-Una vez creado el programa, se puede **activar con `glUseProgram(progShader);`** para que la GPU lo utilice.
-```c
-GLuint setShaders(const char *nVertx, const char *nFrag) {
-    // Leer archivos de shaders
-    char *ficherovs = textFileRead(nVertx);
-    char *ficherofs = textFileRead(nFrag);
-    const char *codigovs = ficherovs;
-    const char *codigofs = ficherofs;
-
-    // Crear y compilar Vertex Shader
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &codigovs, NULL);
-    glCompileShader(vertexShader);
-
-    // Crear y compilar Fragment Shader
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &codigofs, NULL);
-    glCompileShader(fragmentShader);
-
-    // Liberar memoria de archivos
-    free(ficherovs);
-    free(ficherofs);
-
-    // Crear y enlazar el programa de shaders
-    GLuint progShader = glCreateProgram();
-    glAttachShader(progShader, vertexShader);
-    glAttachShader(progShader, fragmentShader);
-    glLinkProgram(progShader);
-    printProgramInfoLog(progShader); // Verificar errores
-
-    return progShader; // Retorna el ID del programa
-}
-```
-
-# 3.5 Ejemplo Detallado
-
-##  Definir los Datos de los Vértices
-Se declara un array `vertices[]`, donde cada fila representa un **vértice** con:
-
-- **3 valores de posición** `(x, y, z)`.
-- **3 valores de color** `(r, g, b)`.
-
-```cpp
-float vertices[] = {
-    // Posición (x, y, z)   // Color (r, g, b)
-    0.0f,  0.0f, 0.0f,      1.0f, 1.0f, 1.0f,  // Vértice 0
-    0.5f,  0.0f, 0.0f,      1.0f, 0.0f, 0.0f,  // Vértice 1
-    0.0f,  0.5f, 0.0f,      0.0f, 1.0f, 0.0f,  // Vértice 2
-    0.0f,  0.5f, 0.0f,      0.0f, 0.0f, 1.0f,  // Vértice 3
-    0.5f,  0.5f, 0.5f,      1.0f, 1.0f, 1.0f   // Vértice 4
-};
-```
-
-
-## Definir los Índices (Element Buffer Object - EBO)
-Se crea un array `indices[]`, que define el orden en que los vértices se deben **conectar para formar primitivas (líneas, triángulos, etc.)**.
-
-```cpp
-unsigned int indices[] = {0, 2, 0, 3, 0, 4};
-```
-
-Este array indica que:
-- El **vértice 0 se conecta con el 2**.
-- El **vértice 0 se conecta con el 3**.
-- El **vértice 0 se conecta con el 4**.
-
-
-## Crear los Buffers (VAO, VBO y EBO)
-Se **generan identificadores** para cada buffer.
-
-```cpp
-unsigned int VAO, VBO, EBO;
-glGenVertexArrays(1, &VAO);  // Crea un VAO
-glGenBuffers(1, &VBO);       // Crea un VBO
-glGenBuffers(1, &EBO);       // Crea un EBO
-```
-
-## Configurar el VAO
-El **VAO (Vertex Array Object)** es el objeto que agrupa todos los buffers.
-
-```cpp
-glBindVertexArray(VAO);
-```
-
-Se activa para almacenar la configuración de los buffers.
-
-## Enviar los Datos de los Vértices al VBO
-Se enlaza el **Vertex Buffer Object (VBO)** y se copia la información de `vertices[]` a la GPU.
-
-```cpp
-glBindBuffer(GL_ARRAY_BUFFER, VBO);
-glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-```
-
-`GL_STATIC_DRAW`: Indica que los datos **no cambiarán** frecuentemente.
-
-## Configurar los Atributos de los Vértices
-Cada vértice tiene **dos atributos**: **posición (x, y, z) y color (r, g, b)**.
-
-**Posición (Atributo 0)**
-```cpp
-glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-glEnableVertexAttribArray(0);
-```
-
-- `0`: Índice del atributo **(posición)**.
-- `3`: Cantidad de valores (**x, y, z**).
-- `GL_FLOAT`: Tipo de datos (`float`).
-- `6 * sizeof(float)`: Distancia entre atributos (`stride`).
-- `(void*)0`: Desplazamiento (**offset = 0** porque la posición es el primer dato).
-
-**Color (Atributo 1)**
-```cpp
-glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-glEnableVertexAttribArray(1);
-```
-
-- `1`: Índice del atributo **(color)**.
-- `3`: Cantidad de valores (**r, g, b**).
-- `(void*)(3 * sizeof(float))`: **Desplazamiento de 3 floats** para saltar la posición.
-
-## Configurar el EBO
-Se enlaza el **Element Buffer Object (EBO)** y se copian los `indices[]` a la GPU.
-
-```cpp
-glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-```
-
->[!Nota]
-> En el `glBindBuffer` si es un buffer de indices se especifica `GL_ELEMENT_ARRAY_BUFFER` si es un buffer de vértices se especifica `GL_ARRAY_BUFFER` 
-## Liberar Memoria
-
-Una vez configurados los buffers, **se pueden liberar los datos de la CPU**.
-
-```cpp
-glDeleteBuffers(1, &VBO);
-glDeleteBuffers(1, &EBO);
-```
-
-**No se borra el VAO** porque mantiene la configuración.
-
-# 3.6 Usar el VAO
-
-**Tenemos nuestro VAO y nuestros shaders**
-- `VAO` almacena la configuración de los vértices.
-- `setShaders("shader.vert", "shader.frag")` carga y compila los shaders.
-
-**Dentro del bucle de renderizado (`while`):**
-- Se limpia el buffer de color con `glClearColor()` y `glClear()`.
-- Se usa el **programa de shaders** con `glUseProgram(shaderProgram)`.
-- Se **activa el VAO** con `glBindVertexArray(VAO)`, lo que carga los atributos de los vértices previamente configurados.
-- Se llama a `glDrawArrays(GL_LINES, 0, 6)`, que **dibuja líneas** usando los datos almacenados en el VAO.
-- Se **desvincula el VAO** con `glBindVertexArray(0)`, aunque no es obligatorio en cada iteración.
-- Se actualiza la ventana con `glfwSwapBuffers(window)`, mostrando la imagen renderizada.
-- Se procesan eventos de entrada con `glfwPollEvents()`.
-
-## `glDrawArrays(GL_LINES, 0, 6)`
-Este comando **dibuja líneas** a partir de los vértices almacenados en el VAO.
-
-📌 **Parámetros:**
-
-- `GL_LINES` → Dibuja líneas conectando pares de vértices.
-- `0` → Índice del primer vértice a usar.
-- `6` → Número de vértices a dibujar.
-
-Esto significa que OpenGL **dibujará 3 líneas** usando los 6 primeros vértices.
-
-# 3.7 Transformaciones (crazy shit)
-Primero tenemos que modificar el **Vertex Shader**:
-```glsl
 layout (location = 0) in vec3 aPos;
-uniform mat4 transform;
-void main() {
-gl_Position = transform * vec4(aPos, 1.0f);
+
+void main(){
+	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
 }
 ```
+
+- `layout (location=0) in vec3 aPos` permite almacenar los elementos del atributo identificado como 0 en VA activo en un vector llamado `aPos` de 3 componentes.
+- `glPosition` es una variable predefinida que podremos modificar para alterar la posición de los vértices. En este caso conservamos la de entrada.
+
+El código de un FS podría ser el siguiente: 
+```glsl
+#version 330 core
+void main(){
+	gl_FragColor = vec4(1, .5, .2, 1.);
+}
+```
+
+En caso de que el VAO tenga 2 atributos (vértices y colores) el código de ambos shaders podría ser: 
+```
+// Vertex Shader
+#version 330 core
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aColor;
+
+out vec3 ourColor;
+
+void main() {
+    gl_Position = vec4(aPos, 1.0);
+    ourColor = aColor;
+}
+```
+
+Para utilizar los shaders en el programa: 
+![[Pasted image 20250430110504.png]]
+![[Pasted image 20250430110514.png]]
+# 3 Transformaciones
+En opengl las transformaciones geométricas se aplican en el VS, multiplicando la matriz de transformación por el vértice y devolviendo la nueva posición. La matriz de transformación se calcula en el `main` usando la biblioteca **GLM** (OpenGl Mathematics).
+
+- `glm::mat4 transform`: declaración de la matriz de transformación
+- `glm::mat4 ()`: devuelve la identidad 4x4
+- `glm::translate(transform,glm::vec3(T_x,T_y,T_z)`: traslación
+- `glm::rotate(transform,0, glm::Vec3(x,y,z)`: rotación
+- `glm::scale(transofrm, glm::vec4(S_x,S_y,S_z)`: escalado
+
+La matriz se envía al VS usando una variable de tipo `uniform`
+![[Pasted image 20250430111741.png]]
+![[Pasted image 20250430111754.png]]
+![[Pasted image 20250430111806.png]]
 
 Para evitar andar usando el glm::nombrefunc, vamos a tirar de `C++` y le chantamos en la primera línea del programa: 
 ``` C++
 using namespace glm;
 ```
 
-Y para que el shader reciba la matriz:
-```C++
-unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
-glUniformMatrix4fv(transformLoc, 1, GL_FALSE,glm::value_ptr(transform));
-``` 
 
-Tenemos lo mismo que en la 1.2:
-```C++
-mat4 transform = mat4(1.0f);
-transform = translate(transform, vec3(0.25f, 0.0f, 0.0f));
-transform = rotate(transform, angulo, vec3(0.0f, 0.0f, 1.0f));
-transform = scale(transform, vec3(0.1f, 0.1f, 0.1f));
-```
+# 4 Visión
+En opengl el trabajo sobre la cámara se divide en **las matrices de proyección y de vista**. Para que el VS calcule la posición de los vértices, se **multiplican** la matriz de **proyección, de la vista y la del modelo por los vértices** en coordenadas locales. El orden de la multiplicación es relevante porque el producto no es conmutativo.
 
-# 3.8 Cámara
-En OpenGL 3.3, la **cámara** se implementa mediante **tres matrices clave** que transforman los vértices de los objetos en el mundo 3D hasta la pantalla:
-1. **Matriz Modelo (`Mmodel`)**: Ubica los objetos en el mundo.
-2. **Matriz Vista (`Mview`)**: Define la posición y orientación de la cámara.
-3. **Matriz de Proyección (`Mprojection`)**: Define el tipo de proyección (perspectiva u ortográfica).
+$$V_{\text{coordendas clip space}} = M_{proyección} \times M_{vista} \times M_{modelo} \times V_{\text{coordenadas locales}}$$
 
-El **pipeline de transformación** en OpenGL se ve así:
+- `glm::mat4 view = glm::lookAt(glm::vec3(x,y,z), glm::vec3(x,y,z), glm::vec3(x,y,z));`: para definir la **matriz de vista**
 
-$$V_{clip} = M_{projection} \times M_{view} \times M_{model} \times V_{local}$$
+- `glm::mat4 proj = glm::ortho(left, right, top, down, near, far);`: para realizas una **proyección ortográfica**
 
-Donde:
-- $V_{local}$ son las coordenadas originales del vértice.
-- $M_{model}$ lo posiciona en el mundo.
-- $M_{view}$ lo transforma según la cámara.
-- $M_{projection}$ ajusta la proyección a la pantalla.
+- **R** = right
+- **L** = left
+- **T** = top
+- **B** = bottom
+- **N** = near
+- **F** = far
+$$\begin{bmatrix} \frac{2}{R - L} & 0 & 0 & -\frac{(R + L)}{R - L} \\ 0 & \frac{2}{T - B} & 0 & -\frac{(T + B)}{T - B} \\ 0 & 0 & \frac{2}{F - N} & -\frac{(F + N)}{F - N} \\ 0 & 0 & 0 & 1 \end{bmatrix}$$
 
-## 3.8.1 Matriz de Proyección (`Mprojection`)
-Define **cómo se proyectan los objetos en la pantalla**. Hay dos tipos principales:
+- `glm::perspective(fov, aspect, near, far);`: para realizar una proyección **ortográfica**.
 
-### Volumen Ortográfico (`glm::ortho`)
-```cpp
-glm::mat4 proj = glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.1f, 100.0f);
-```
+$$\begin{bmatrix} \frac{1}{\text{Aspect} \cdot \tan(fovy/2)} & 0 & 0 & 0 \\ 0 & \frac{1}{\tan(fovy/2)} & 0 & 0 \\ 0 & 0 & \frac{N+F}{N-F} & \frac{2FN}{N-F} \\ 0 & 0 & -1 & 0 \end{bmatrix}$$
 
-No hay perspectiva ni profundidad, los objetos mantienen su tamaño.  
 
-```cpp
-glm::ortho(left, right, bottom, top, near, far);
-```
+Las matices se envían al VS usando una variable de tipo **uniform**.
+![[Pasted image 20250430112924.png]]
 
-- `left, right`: Límites izquierdo y derecho del volumen ortográfico.
-- `bottom, top`: Límites inferior y superior.
-- `near, far`: Distancia del recorte cercano y lejano.
+Para que al **reescalar la ventana** se mantengan las **proporciones** de la imagen hay que actualizar el aspecto de la perspectiva al nuevo tamaño de la ventana: 
+![[Pasted image 20250430113018.png]]
+![[Pasted image 20250430113034.png]]
 
 
-### Volumen en Perspectiva (`glm::perspective`)
+# 5 Luces
+## 5.1 Modelo de Iluminación Básico
+El color de un objeto es fruto de **su color original multiplicado** por el **color de la luz** con la que se ilumina. 
+![[Pasted image 20250430113551.png]]
 
-```cpp
-glm::mat4 proj = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 100.0f);
-```
+## 5.2 Luz Ambiente
+$$I= I_A*K_A$$
+![[Pasted image 20250430113630.png]]
 
+## 5.3 Luz Difusa
+Necesitamos pasarle el shader:
+- La atenuación
+- Las coordenadas de las normales de las caras
+- La posición de la luz
+- El punto de cálculo para ver la dirección de la luz $\vec{L}$
 
-```cpp
-glm::perspective(fov, aspect, near, far);
-```
-- `fov`: **Campo de visión** en radianes (se recomienda `glm::radians(45.0f)`).
-- `aspect`: Relación de aspecto `(float) width / (float) height`.
-- `near, far`: **Distancia de recorte**, los objetos fuera de este rango no se dibujan.
+$$I=I_l \times \cos(\theta) = I_l \times K_D \times (\vec N \cdot \vec L)$$
+![[Pasted image 20250430113928.png]]
+![[Pasted image 20250430114025.png]]
+![[Pasted image 20250430113957.png]]
+![[Pasted image 20250430114034.png]]
 
+## 5.4 Luz Especular
+$$I = I_L \times K_S \times \cos^n(𝛼) = I_L \times K_S \times (\vec R \cdot \vec V)^n$$
+Hay que pasarle al FS, además de lo ya dicho, la posición de la cámara.
 
-## 3.8.2 Matriz de Vista (`Mview`)
-Define **dónde está la cámara y hacia dónde mira**. Se usa `glm::lookAt()`, que devuelve una matriz de vista.
+![[Pasted image 20250430114210.png]]
 
-```cpp
-glm::mat4 view = glm::lookAt(
-    glm::vec3(0.0f, 0.0f, 3.0f), // Posición de la cámara
-    glm::vec3(0.0f, 0.0f, 0.0f), // Hacia dónde mira
-    glm::vec3(0.0f, 1.0f, 0.0f)  // Vector "arriba"
-);
-```
-
-```cpp
-glm::lookAt(posCam, objetivo, up);
-```
-
-- `posCam`: **Posición de la cámara** en el mundo.
-- `objetivo`: **Hacia dónde mira la cámara**.
-- `up`: **Vector "arriba"** para definir la inclinación.
-
-
-```cpp
-glm::vec3 posCam(0.0f, 2.0f, 5.0f); // Cámara arriba y atrás
-glm::vec3 objetivo(0.0f, 0.0f, 0.0f); // Mira al origen
-glm::mat4 view = glm::lookAt(posCam, objetivo, glm::vec3(0.0f, 1.0f, 0.0f));
-```
-
-
-## 3.8.3 Matriz de Modelo (`Mmodel`)
-Define **dónde está cada objeto en la escena**. Se combinan transformaciones:
-
-```cpp
-glm::mat4 model = glm::mat4(1.0f); // Matriz identidad
-model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f)); // Traslación
-model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotación
-model = glm::scale(model, glm::vec3(1.0f, 2.0f, 1.0f)); // Escala
-```
-
-
-## 3.8.4 Transformaciones en el Shader
-
-El **shader de vértices** usa las 3 matrices (`model`, `view`, `projection`) para transformar los vértices.
-
-```glsl
-#version 330 core
-layout (location = 0) in vec3 aPos; // Posición del vértice
-uniform mat4 model; 
-uniform mat4 view;
-uniform mat4 projection;
-
-void main() {
-    gl_Position = projection * view * model * vec4(aPos, 1.0); // Transformaciones
-}
-```
-
-📌 **Explicación**  
-Primero, `model` coloca el objeto en la escena.  
-Luego, `view` transforma todo según la cámara.  
-Finalmente, `projection` aplica la proyección.
-
-## 3.8.5 Cómo Enviar las Matrices a OpenGL
-Antes de dibujar, **enviamos las matrices al shader** usando `glUniformMatrix4fv()`.
-
-```cpp
-unsigned int modelLoc = glGetUniformLocation(shaderProgram, "model");
-glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
-unsigned int viewLoc = glGetUniformLocation(shaderProgram, "view");
-glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-
-unsigned int projectionLoc = glGetUniformLocation(shaderProgram, "projection");
-glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(proj));
-```
-
-- `glGetUniformLocation(shaderProgram, "nombre_uniform")`: Busca la variable en el shader.
-- `glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(matrix))`: Envía la matriz a la GPU.
-
-# 3.9 Iluminación
-En OpenGL 1.2, la iluminación se manejaba con funciones predefinidas como `glLightfv()` o `glMaterialfv()`. Sin embargo, en OpenGL 3.3, estas funciones han sido eliminadas y toda la iluminación se debe calcular manualmente mediante **shaders**. Esto significa que:
-
-- **El vertex shader** se encarga de procesar las normales y posiciones de los objetos.
-- **El fragment shader** realiza los cálculos de iluminación y color.
-
-
-## 3.9.1 Tipos de iluminación
-### **1. Iluminación ambiental**
-Es una luz uniforme que **no tiene dirección específica**. Simula la luz reflejada por el entorno e ilumina todos los objetos por igual.
-
-**Implementación en el fragment shader:**
-- Se define un color de luz ambiental.
-- Se multiplica por el color del objeto para determinar su resultado final.
-
-```glsl
-out vec4 FragColor;
-uniform vec3 objectColor;
-uniform vec3 ambientLight;
-
-void main() {
-    vec3 result = objectColor * ambientLight;  
-    FragColor = vec4(result, 1.0);  
-}
-```
-
-### **2. Iluminación difusa**
-Este tipo de luz proviene de una dirección específica y se **distribuye en todas direcciones tras impactar** en la superficie del objeto. La cantidad de luz reflejada depende del **ángulo de incidencia** de la luz sobre la superficie.
-
-**Cálculo:**
-
-- Se normalizan las **normales del objeto**.
-- Se calcula el **producto escalar (dot product)** entre la normal y la dirección de la luz.
-- Si el resultado es negativo, la luz no debe iluminar esa parte.
-
-
-**Vertex Shader para luz difusa**
-```glsl
-out vec3 FragPos;
-out vec3 Normal;
-
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
-
-in vec3 aPos;
-in vec3 aNormal;
-
-void main() {
-    FragPos = vec3(model * vec4(aPos, 1.0));  
-    Normal = mat3(transpose(inverse(model))) * aNormal;  
-    gl_Position = projection * view * vec4(FragPos, 1.0);  
-}
-```
-
-**Fragment Shader para luz difusa**
-```glsl
-out vec4 FragColor;
-in vec3 FragPos;
-in vec3 Normal;
-
-uniform vec3 lightPos;
-uniform vec3 lightColor;
-uniform vec3 objectColor;
-
-void main() {
-    vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(lightPos - FragPos);
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = diff * lightColor;
-    
-    vec3 result = (diffuse + 0.1) * objectColor;
-    FragColor = vec4(result, 1.0);
-}
-```
-
-### **3. Iluminación especular**
-Este tipo de iluminación simula **brillos** en la superficie de un objeto debido a un **foco de luz**. Depende de la posición de la luz y del observador.
-
-**Cálculo:**
-- Se obtiene la **dirección de la luz** y el **ángulo de incidencia**.
-- Se calcula la **dirección reflejada** de la luz usando la función `reflect()`.
-- Se calcula el **producto escalar** entre la dirección reflejada y la dirección del observador.
-- Se eleva el resultado a una potencia (factor de especularidad) para definir qué tan "brillante" es el reflejo.
-
-**Fragment Shader para luz especular**
-```glsl
-out vec4 FragColor;
-in vec3 FragPos;
-in vec3 Normal;
-
-uniform vec3 lightPos;
-uniform vec3 viewPos;
-uniform vec3 lightColor;
-uniform vec3 objectColor;
-
-void main() {
-    vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(lightPos - FragPos);
-    
-    // Cálculo de la luz difusa
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = diff * lightColor;
-    
-    // Cálculo de la luz especular
-    vec3 viewDir = normalize(viewPos - FragPos);
-    vec3 reflectDir = reflect(-lightDir, norm);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 128.0);
-    vec3 specular = spec * lightColor;
-    
-    // Resultado final
-    vec3 result = (diffuse + specular + 0.1) * objectColor;
-    FragColor = vec4(result, 1.0);
-}
-```
-
-### **4. Luz en cono (Spotlight)**
-Para simular un **foco direccional** (como una linterna), se agrega una condición para limitar la iluminación solo a una región específica.
-
-**Cálculo:**
-- Se define un **ángulo de apertura** para el cono de luz.
-- Se calcula si el fragmento se encuentra dentro del cono mediante el **producto escalar**.
-- Si está fuera del cono, la luz no afecta al objeto.
-
-**Fragment Shader para luz en cono**
-```glsl
-out vec4 FragColor;
-in vec3 FragPos;
-in vec3 Normal;
-
-uniform vec3 lightPos;
-uniform vec3 lightDir;
-uniform float cutoffAngle;
-uniform vec3 lightColor;
-uniform vec3 objectColor;
-
-void main() {
-    vec3 norm = normalize(Normal);
-    vec3 lightDirection = normalize(lightPos - FragPos);
-    
-    // Producto escalar para comprobar si está dentro del cono
-    float theta = dot(lightDirection, normalize(-lightDir));
-    float epsilon = cutoffAngle;  
-
-    if (theta > cos(radians(epsilon))) {  // Solo iluminar dentro del cono
-        float diff = max(dot(norm, lightDirection), 0.0);
-        vec3 diffuse = diff * lightColor;
-        vec3 result = (diffuse + 0.1) * objectColor;
-        FragColor = vec4(result, 1.0);
-    } else {
-        FragColor = vec4(0.0);  // No iluminar si está fuera del cono
-    }
-}
-```
-
-
-# 3.10 Texturas
-## 3.10.1 Cargar la textura
-Usando `stb_image.h`:
-
-```cpp
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
-```
-
-```cpp
-unsigned int texture;
-glGenTextures(1, &texture);
-glBindTexture(GL_TEXTURE_2D, texture);
-
-// Parámetros de la textura
-glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-// Cargar la imagen
-int width, height, nrChannels;
-unsigned char *data = stbi_load("imagen.png", &width, &height, &nrChannels, 0);
-if (data) {
-    GLenum format = GL_RGB;
-    if (nrChannels == 1) format = GL_RED;
-    else if (nrChannels == 4) format = GL_RGBA;
-
-    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-} else {
-    std::cout << "Error al cargar textura" << std::endl;
-}
-stbi_image_free(data);
-```
-
-## 3.10.2 Shaders
-
-### Vertex Shader
-
-```glsl
-#version 330 core
-layout (location = 0) in vec3 aPos;
-layout (location = 1) in vec3 aNormal;
-layout (location = 2) in vec2 aTexCoord;
-
-out vec2 TexCoord;
-
-uniform mat4 transform;
-
-void main() {
-    gl_Position = transform * vec4(aPos, 1.0);
-    TexCoord = aTexCoord;
-}
-```
-
-### Fragment Shader
-
-```glsl
-#version 330 core
-in vec2 TexCoord;
-
-uniform sampler2D texture1;
-
-out vec4 FragColor;
-
-void main() {
-    FragColor = texture(texture1, TexCoord);
-}
-```
-
-## 3.10.3 Enlazar la textura y dibujar
-Antes de dibujar:
-
-```cpp
-glActiveTexture(GL_TEXTURE0);               // Activar unidad 0
-glBindTexture(GL_TEXTURE_2D, texture);      // Bind de la textura
-shader.use();                               // Usar el shader
-shader.setInt("texture1", 0);               // Enviar sampler al shader
-```
-
-Y luego dibujas con VAO + draw:
-```cpp
-glBindVertexArray(VAO);
-glDrawArrays(GL_TRIANGLES, 0, numVertices);
-```
-
-## 3.10.4 Multitextura (opcional)
-OpenGL 3.3 permite **usar varias texturas a la vez**:
-
-```cpp
-glActiveTexture(GL_TEXTURE0);
-glBindTexture(GL_TEXTURE_2D, texture1);
-
-glActiveTexture(GL_TEXTURE1);
-glBindTexture(GL_TEXTURE_2D, texture2);
-
-// En shader:
-uniform sampler2D texture1;
-uniform sampler2D texture2;
-```
-
-## 3.10.5 Transparencia y canal Alpha
-Para PNG o GIF con transparencia (canal alpha), asegúrate de:
-- Usar `GL_RGBA` al cargar la textura.
-- Habilitar blending:
-
-```cpp
-glEnable(GL_BLEND);
-glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-```
-
-Esto mezcla el color del objeto con el fondo según el canal alpha.
-
-
-## Detalles de parámetros de textura
-- `GL_TEXTURE_WRAP_S/T`: Qué hacer cuando las coordenadas son mayores a 1 o menores que 0. 
-    - `GL_REPEAT`: repite la textura.
-    - `GL_CLAMP_TO_EDGE`: estira el borde.
-
-- `GL_TEXTURE_MIN_FILTER / MAG_FILTER`: Qué hacer cuando hay escalado.
-    - `GL_LINEAR`: interpolación.
-    - `GL_NEAREST`: sin interpolación, efecto pixelado.
-
-
-## Resumen visual
-
-|Elemento|OpenGL 1.2|OpenGL 3.3|
-|---|---|---|
-|Envío de textura|`glTexImage2D(...)`|Igual, pero puedes usar mipmaps|
-|Coordenadas de textura|`glTexCoord2f(...)`|Atributo `aTexCoord`, buffer|
-|Activación de textura|`glBindTexture(...)`|Igual, pero puedes usar `glActiveTexture`|
-|Shaders|❌|✅ Obligatorio|
-|Multitextura|Limitado|Muy flexible con unidades|
-|Transparencia|Alpha Test|Blending con `glBlendFunc`|

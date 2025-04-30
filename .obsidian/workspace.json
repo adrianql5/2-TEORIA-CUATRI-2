@@ -4,21 +4,52 @@
     "type": "split",
     "children": [
       {
-        "id": "10f07e0acfd84625",
+        "id": "a2e7221b6b86ca9e",
         "type": "tabs",
         "children": [
           {
-            "id": "aa79ec9b3c985727",
+            "id": "0bc014f587debe59",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "XEFE/4. Interpretación y Análisis de la información financiera.md",
+                "file": "COGA/Programar en 3.3.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Interpretación y Análisis de la información financiera"
+              "title": "Programar en 3.3"
+            }
+          },
+          {
+            "id": "a6d161fc4760f3bb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "COGA/5. Iluminación.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "5. Iluminación"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "7cd8b6e5995c3192",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2cec3f995786a300",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nueva pestaña"
             }
           }
         ]
@@ -78,8 +109,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "fe6223fe8f51cf24",
@@ -168,53 +198,52 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "aa79ec9b3c985727",
+  "active": "a6d161fc4760f3bb",
   "lastOpenFiles": [
-    "XEFE/3. La Información Financiera como Base para la toma de Decisiones..md",
-    "XEFE/4. Interpretación y Análisis de la información financiera.md",
-    "XEFE/2. Creación de empresas, de la generación de ideas al Business Plan.md",
+    "COGA/CoGa_5_Iluminacion.pdf",
+    "COGA/5. Iluminación.md",
     "COGA/Programar en 3.3.md",
+    "COGA/archivos/imagenes/Pasted image 20250430114210.png",
+    "COGA/archivos/imagenes/Pasted image 20250430114034.png",
+    "COGA/archivos/imagenes/Pasted image 20250430114025.png",
+    "COGA/archivos/imagenes/Pasted image 20250430113957.png",
+    "COGA/archivos/imagenes/Pasted image 20250430113928.png",
+    "COGA/archivos/imagenes/Pasted image 20250430113909.png",
+    "COGA/archivos/imagenes/Pasted image 20250430113630.png",
+    "COGA/archivos/imagenes/Pasted image 20250430113551.png",
+    "COGA/CoGa_4_Vision.pdf",
+    "COGA/archivos/imagenes/Pasted image 20250430113034.png",
+    "COGA/archivos/imagenes/Pasted image 20250430113018.png",
+    "COGA/4. Visión.md",
+    "COGA/CoGa_3_Transformaciones.pdf",
+    "COGA/CoGa_2_Modelado.pdf",
+    "COGA/6. Texturas.md",
+    "COGA/CoGa_6_Texturas.pdf",
     "COGA/Programar en 1.2.md",
-    "COGA/6. Tema 6.md",
-    "COGA/5. Tema 5.md",
-    "XEFE/1. Introducción a la actividad económica y empresarial.md",
-    "XEFE/6. Evaluación y Selección de Proyectos.md",
-    "n.md",
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "COGA/3. Transformaciones.md",
     "AQRCOMP/2. Segmentación.md",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419190035.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419190013.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419185957.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419185919.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419184659.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419184121.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419183945.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419183739.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419183358.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250419182232.png",
-    "AQRCOMP/archivos/bibliografia/ArCom_2_Segmentacion.pdf",
-    "AQRCOMP/archivos/bibliografia/ArCom_1_Sistemas_multinúcleo.pdf",
+    "COGA/2. Modelado.md",
+    "README.md",
+    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
     "AQRCOMP/archivos/bibliografia/ArCom_3_Paralelismo_nivel_instruccion.pdf",
-    "AQRCOMP/archivos/bibliografia/AC_Notas_Clase_Tema1_12_13.pdf",
-    "COGA/archivos/bibliografia/BitacorasCOGA_180222231744.pdf",
-    "SOII/archivos/bibliografia/[1] Sistemas operativos modernos.pdf",
-    "SOII/1. Comunicación y Sincronización entre Procesos (IPC).md",
-    "SOII/archivos/bibliografia/[1] Sistemas Operativos - Una Vision Aplicada.pdf",
-    "Informe P3.md",
-    "DESOFT/8. Patrones de Creación.md",
-    "BDII/5. Sistema de Recuperación.md",
-    "SOII/5. Bash Cheatsheet.md",
-    "AQRCOMP/archivos/bibliografia/Tema1-24-25.pdf",
+    "archivos/imagenes",
+    "archivos",
+    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "XEFE/6. Evaluación y Selección de Proyectos.md",
     "BDII/archivos/bibliografia/bases_datos.pdf",
     "BDII/archivos/bibliografia/ApuntesBBDD2_180519160719.pdf",
-    "BDII/4. Control de Concurrencia.md",
+    "BDII/6. Almacenamiento y estructura de archivos.md",
+    "BDII/5. Sistema de Recuperación.md",
+    "COGA/7. Otras Técnicas.md",
+    "COGA/1. Introducción.md",
+    "DESOFT/8. Patrones de Creación.md",
+    "DESOFT/10. Patrones de Comportamiento.md",
+    "DESOFT/9. Patrones Estructurales.md",
     "DESOFT/7. Patrones de Diseño.md",
     "DESOFT/6. Otros Diagramas de Modelado.md",
     "DESOFT/5. Modelado Estructural Avanzado.md",
     "DESOFT/4. Modelado de Comportamiento.md",
-    "COGA/4. Tema 4.md",
-    "COGA/3. TEMA 3.md",
-    "COGA/2. TEMA 2.md",
-    "BDII/3. Transacciones.md"
+    "DESOFT/3. Modelado Estructural.md",
+    "DESOFT/2. Modelado de Casos de Uso.md"
   ]
 }
