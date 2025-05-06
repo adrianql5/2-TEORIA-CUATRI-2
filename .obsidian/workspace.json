@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "a2e7221b6b86ca9e",
+        "id": "d718ad8cc4d924b2",
         "type": "tabs",
         "children": [
           {
-            "id": "0bc014f587debe59",
+            "id": "6d7863811533fb8f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,37 +22,21 @@
             }
           },
           {
-            "id": "a6d161fc4760f3bb",
+            "id": "b0ea22ed65e8b3e8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "COGA/5. Iluminación.md",
+                "file": "XEFE/7. Fuentes de Financiación de la Empresa.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5. Iluminación"
+              "title": "7. Fuentes de Financiación de la Empresa"
             }
           }
         ],
         "currentTab": 1
-      },
-      {
-        "id": "7cd8b6e5995c3192",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "2cec3f995786a300",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Nueva pestaña"
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -72,7 +56,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Explorador de archivos"
@@ -109,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "fe6223fe8f51cf24",
@@ -172,12 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "COGA/Programar en 3.3.md",
                 "followCursor": false,
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema"
+              "title": "Esquema de Programar en 3.3"
             }
           }
         ],
@@ -195,14 +181,42 @@
       "canvas:Crear nuevo lienzo": false,
       "daily-notes:Abrir la nota de hoy": false,
       "templates:Insertar plantilla": false,
-      "command-palette:Abrir paleta de comandos": false
+      "command-palette:Abrir paleta de comandos": false,
+      "obsidian-full-calendar:Open Full Calendar": false
     }
   },
-  "active": "a6d161fc4760f3bb",
+  "active": "b0ea22ed65e8b3e8",
   "lastOpenFiles": [
-    "COGA/CoGa_5_Iluminacion.pdf",
-    "COGA/5. Iluminación.md",
     "COGA/Programar en 3.3.md",
+    "XEFE/7. Fuentes de Financiación de la Empresa.md",
+    "2025-05-20 COGA.md",
+    "Calendario.md",
+    "COGA/Programar en 1.2.md",
+    "COGA/7. Otras Técnicas.md",
+    "COGA/6. Texturas.md",
+    "COGA/5. Iluminación.md",
+    "COGA/4. Visión.md",
+    "COGA/3. Transformaciones.md",
+    "COGA/2. Modelado.md",
+    "COGA/1. Introducción.md",
+    "2025-06-05 XEFE.md",
+    "2025-06-04 DESOFT.md",
+    "2025-06-03 DESOFT.md",
+    "2025-06-03 XEFE.md",
+    "2025-06-02 DESOFT.md",
+    "2025-06-01 ARCOMP.md",
+    "2025-05-31 ARCOMP.md",
+    "2025-05-30 ARCOMP.md",
+    "2025-05-30 XEFE.md",
+    "2025-05-29 DESOFT.md",
+    "2025-05-28 XEFE.md",
+    "2025-05-27 ARCOMP.md",
+    "2025-05-26 SOI.md",
+    "2025-05-25 SOI.md",
+    "AQRCOMP/archivos/bibliografia/solucion_ej2_240423_103622-3.pdf",
+    "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250505130035.png",
+    "COGA/CoGa_5_Iluminacion.pdf",
     "COGA/archivos/imagenes/Pasted image 20250430114210.png",
     "COGA/archivos/imagenes/Pasted image 20250430114034.png",
     "COGA/archivos/imagenes/Pasted image 20250430114025.png",
@@ -213,37 +227,11 @@
     "COGA/archivos/imagenes/Pasted image 20250430113551.png",
     "COGA/CoGa_4_Vision.pdf",
     "COGA/archivos/imagenes/Pasted image 20250430113034.png",
-    "COGA/archivos/imagenes/Pasted image 20250430113018.png",
-    "COGA/4. Visión.md",
     "COGA/CoGa_3_Transformaciones.pdf",
     "COGA/CoGa_2_Modelado.pdf",
-    "COGA/6. Texturas.md",
     "COGA/CoGa_6_Texturas.pdf",
-    "COGA/Programar en 1.2.md",
-    "COGA/3. Transformaciones.md",
-    "AQRCOMP/2. Segmentación.md",
-    "COGA/2. Modelado.md",
-    "README.md",
-    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
     "AQRCOMP/archivos/bibliografia/ArCom_3_Paralelismo_nivel_instruccion.pdf",
     "archivos/imagenes",
-    "archivos",
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "XEFE/6. Evaluación y Selección de Proyectos.md",
-    "BDII/archivos/bibliografia/bases_datos.pdf",
-    "BDII/archivos/bibliografia/ApuntesBBDD2_180519160719.pdf",
-    "BDII/6. Almacenamiento y estructura de archivos.md",
-    "BDII/5. Sistema de Recuperación.md",
-    "COGA/7. Otras Técnicas.md",
-    "COGA/1. Introducción.md",
-    "DESOFT/8. Patrones de Creación.md",
-    "DESOFT/10. Patrones de Comportamiento.md",
-    "DESOFT/9. Patrones Estructurales.md",
-    "DESOFT/7. Patrones de Diseño.md",
-    "DESOFT/6. Otros Diagramas de Modelado.md",
-    "DESOFT/5. Modelado Estructural Avanzado.md",
-    "DESOFT/4. Modelado de Comportamiento.md",
-    "DESOFT/3. Modelado Estructural.md",
-    "DESOFT/2. Modelado de Casos de Uso.md"
+    "archivos"
   ]
 }
