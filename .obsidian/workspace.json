@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SOII/3. Sistemas en Tiempo Real.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3. Sistemas en Tiempo Real"
+              "title": "README"
             }
           },
           {
@@ -212,10 +212,10 @@
       "obsidian-full-calendar:Open Full Calendar": false
     }
   },
-  "active": "f89770d9b397cdc8",
+  "active": "55d9518bad153b06",
   "lastOpenFiles": [
-    "SOII/archivos/bibliografia/SOII_2_Interbloqueos.pdf",
     "SOII/3. Sistemas en Tiempo Real.md",
+    "SOII/archivos/bibliografia/SOII_2_Interbloqueos.pdf",
     "SOII/archivos/bibliografia/SOII_1_Comunicacion_y_sincronizacion.pdf",
     "SOII/1. Comunicación y Sincronización entre Procesos.md",
     "SOII/2. Interbloqueos.md",
