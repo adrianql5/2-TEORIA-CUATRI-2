@@ -1,8 +1,8 @@
 {
   "theme": "moonstone",
   "cssTheme": "Obsidian Nord",
-  "interfaceFontFamily": "Agave Nerd Font,Times New Roman",
-  "textFontFamily": "Agave Nerd Font,Times New Roman",
+  "interfaceFontFamily": "Agave Nerd Font",
+  "textFontFamily": "Agave Nerd Font",
   "monospaceFontFamily": "Agave Nerd Font Mono",
   "showRibbon": false
 }
