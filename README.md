@@ -10,19 +10,17 @@ Apuntes de segundo de carrera escritos en **Markdown**. Para visualizar correcta
     
 - Está muy guapa (cuando las cosas funcionan, lo cual no es siempre).
     
-- Se estudia la versión 1.2, que es **useless de cojones**.
+- Se estudia la versión 1.2, que es **useless**.
     
-- El profesor es **posiblemente el mayor subnormal** que vais a ver en toda la carrera. La bibliografía es una **puta mierda**, no le gusta trabajar y los exámenes son **dificilísimos**.
+- El profesor es **posiblemente el mayor subnormal** que vais a ver en toda la carrera. La bibliografía es una **mierda**, no le gusta trabajar y los exámenes son **dificilísimos**.
     
-- **4.5 créditos es una estafa**: las prácticas son complicadas de cojones y el examen una locura.
+- **4.5 créditos es una estafa**: las prácticas son complicadas y el examen se le piró bastante.
     
-- **NO USAR WINDOWS SI TIENES LINUX**: el pavo no se baja un zip ni aunque le pagues. Con enseñarle el código en clase ya le vale.
+- **NO USAR WINDOWS SI TIENES LINUX**: el tipo es capaz de cortarse una pierna antes que bajarse un zip (lo que te permite entregar las prácticas vacías y con tenerlas el dia de la revisón ya está). 
     
-- Seguramente corrija cosas en los apuntes para la recuperación.
-    
-- Lo de la **pipeline de la 1.2 y la 3.3** es de chiste: no hay fuentes, y los **modelos de sombreado** te los planta en un ejercicio jodidísimo sin explicarte nada. A ver si en la revisión le saco algo, el cabrón.
-    
-
+- Lo de la **pipeline de la 1.2 y la 3.3** es de chiste: no hay fuentes, y los **modelos de sombreado** te los planta en un ejercicio jodidísimo sin explicarte nada.
+	
+- Con lo que yo entregué de prácticas saqué un 9. En el final hizo típico test, uno de multiplicar matrices a mano en el orden correcto, escribir un código en 3.3 y otro en 1.2 sobre el tema de transformaciones. El último ejercicio fue una pirada histórica sobre calcular la normal de un cuadrado, como afectaba si lo escalas uniformemente o no uniformemente (si lo escalas negativamente las normales se invierten, vuelta de tuerca histórica que no me di cuenta). En ese mismo ejercicio te pedía calcular la luz que incidía sobre la cara del anterior apartado usando las fórmulas pero calculandola usando gouraud shading y phong shading, ahí hay que inventar que como es una única cara no se aprecian diferencias y que el phong es con los fragmentos. Y después en ese mismo ejercicio te escribías 2 shaders y rascabas un punto.
 ---
 
 ## 🖥️ SOII
@@ -38,7 +36,9 @@ Apuntes de segundo de carrera escritos en **Markdown**. Para visualizar correcta
 - **No renta ir a clase**.
     
 - El tipo **no da ni una puta nota** de la continua.
-    
+	
+- En el final la puede liar mucho, pero no suele ser así.
+
 
 ---
 
