@@ -8,32 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b5e71f38536f7887",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "AQRCOMP/archivos/bibliografia/AC-Ejer-IV.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "AC-Ejer-IV"
-            }
-          },
-          {
-            "id": "eead338a3da86bea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "BDII/Examen 2025.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Examen 2025"
-            }
-          },
-          {
             "id": "e266c0deeed66891",
             "type": "leaf",
             "state": {
@@ -44,9 +18,33 @@
               "icon": "lucide-image",
               "title": "Ex1"
             }
+          },
+          {
+            "id": "7d2924c65a5fe17d",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "AQRCOMP/archivos/bibliografia/Ex2.jpeg"
+              },
+              "icon": "lucide-image",
+              "title": "Ex2"
+            }
+          },
+          {
+            "id": "edbdbaa353a15d96",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Ejercicio_Resolto_ArqComp"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -193,38 +191,39 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f89770d9b397cdc8",
+  "active": "edbdbaa353a15d96",
   "lastOpenFiles": [
+    "AQRCOMP/archivos/bibliografia/solucion_ej2_240423_103622-3.pdf",
+    "AQRCOMP/2. Segmentación.md",
+    "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
+    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
+    "AQRCOMP/archivos/bibliografia/AC-Ejer-II.pdf",
+    "AQRCOMP/4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché).md",
+    "NOTAS TUTORÍA CLANDESTINA.md",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250530170501.png",
+    "archivos/imagenes/Pasted image 20250530141701.png",
+    "archivos/imagenes/Pasted image 20250530141401.png",
+    "archivos/imagenes/Pasted image 20250530141205.png",
+    "archivos/imagenes/Pasted image 20250530141113.png",
+    "archivos/imagenes",
+    "archivos",
+    "AQRCOMP/archivos/bibliografia/Ex2.jpeg",
     "AQRCOMP/archivos/bibliografia/AC-Ejer-IV.pdf",
     "BDII/Examen 2025.md",
     "AQRCOMP/archivos/bibliografia/AC-Ejer-III.pdf",
     "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf",
-    "AQRCOMP/archivos/bibliografia/solucion_ej2_240423_103622-3.pdf",
-    "AQRCOMP/4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché).md",
     "AQRCOMP/archivos/bibliografia/NOTAS FINALES BDII.pdf",
-    "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
     "COGA/Examen 2025.md",
     "SOII/Foros.md",
     "SOII/Examen 2025.md",
     "SOII/Foros2.md",
     "README.md",
-    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
     "AQRCOMP/archivos/imagenes/Pasted image 20250530103547.png",
     "AQRCOMP/archivos/imagenes/Pasted image 20250530102239.png",
     "AQRCOMP/archivos/imagenes/Pasted image 20250530102205.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250530095222.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250530095029.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250529214733.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250529214216.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250529210317.png",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250529205253.png",
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "AQRCOMP/2. Segmentación.md",
     "AQRCOMP/archivos/bibliografia/ArCom_4_Coherencia_cache.pdf",
-    "AQRCOMP/archivos/bibliografia/AC-Ejer-II.pdf",
     "AQRCOMP/archivos/bibliografia/AC-Ejer-I.pdf",
-    "SOII/archivos/bibliografia/Glosario SOII.pdf",
-    "SOII/archivos/Glosario SOII.pdf",
     "DESOFT/6. Otros Diagramas de Modelado.md",
     "DESOFT/10. Patrones de Comportamiento.md",
     "DESOFT/9. Patrones Estructurales.md",
@@ -238,7 +237,6 @@
     "SOII/1. Comunicación y Sincronización entre Procesos.md",
     "Calendario.md",
     "2025-06-06 EXAMEN XEFE.md",
-    "SOII/5. Bash Cheatsheet.md",
-    "COGA/Programar en 3.3.md"
+    "SOII/5. Bash Cheatsheet.md"
   ]
 }
