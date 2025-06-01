@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AQRCOMP/1. Sistemas Multinúcleo.md",
+                "file": "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Sistemas Multinúcleo"
+              "title": "3. Paralelismo a Nivel de Instrucción"
             }
           }
         ]
@@ -172,17 +172,19 @@
   },
   "active": "d4377b623211b393",
   "lastOpenFiles": [
-    "AQRCOMP/archivos/bibliografia/AC-Ejer-IV.pdf",
-    "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf",
     "AQRCOMP/2. Segmentación.md",
-    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "AQRCOMP/archivos/bibliografia/Ex2.jpeg",
-    "AQRCOMP/4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché).md",
-    "AQRCOMP/archivos/bibliografia/00-Introduccion_ARQCOMP_v2425.pdf",
-    "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
     "AQRCOMP/archivos/bibliografia/solucion_ej2_240423_103622-3.pdf",
+    "AQRCOMP/archivos/bibliografia/Ex2.jpeg",
+    "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
+    "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf",
+    "AQRCOMP/archivos/bibliografia/AC-Ejer-III.pdf",
     "AQRCOMP/archivos/bibliografia/AC-Ejer-II.pdf",
+    "AQRCOMP/archivos/bibliografia/AC-Ejer-I.pdf",
+    "AQRCOMP/archivos/bibliografia/00-Introduccion_ARQCOMP_v2425.pdf",
+    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "AQRCOMP/archivos/bibliografia/AC-Ejer-IV.pdf",
+    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
+    "AQRCOMP/4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché).md",
     "NOTAS TUTORÍA CLANDESTINA.md",
     "AQRCOMP/archivos/imagenes/Pasted image 20250530170501.png",
     "archivos/imagenes/Pasted image 20250530141701.png",
@@ -192,7 +194,6 @@
     "archivos/imagenes",
     "archivos",
     "BDII/Examen 2025.md",
-    "AQRCOMP/archivos/bibliografia/AC-Ejer-III.pdf",
     "AQRCOMP/archivos/bibliografia/NOTAS FINALES BDII.pdf",
     "COGA/Examen 2025.md",
     "SOII/Foros.md",
@@ -202,7 +203,6 @@
     "AQRCOMP/archivos/imagenes/Pasted image 20250530103547.png",
     "AQRCOMP/archivos/imagenes/Pasted image 20250530102239.png",
     "AQRCOMP/archivos/imagenes/Pasted image 20250530102205.png",
-    "AQRCOMP/archivos/bibliografia/ArCom_4_Coherencia_cache.pdf",
     "DESOFT/6. Otros Diagramas de Modelado.md",
     "DESOFT/10. Patrones de Comportamiento.md",
     "DESOFT/9. Patrones Estructurales.md",
