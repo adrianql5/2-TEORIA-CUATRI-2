@@ -35,6 +35,18 @@
               "icon": "lucide-file",
               "title": "4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché)"
             }
+          },
+          {
+            "id": "23347215b1f00b3e",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "AQRCOMP/archivos/bibliografia/Ex1.jpeg"
+              },
+              "icon": "lucide-image",
+              "title": "Ex1"
+            }
           }
         ],
         "currentTab": 1
@@ -187,12 +199,17 @@
   },
   "active": "6e81cf7baad8826e",
   "lastOpenFiles": [
+    "AQRCOMP/archivos/imagenes/Pasted image 20250601211047.png",
+    "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
+    "AQRCOMP/4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché).md",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250601210653.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250601210447.png",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250601205650.png",
     "AQRCOMP/archivos/imagenes/Pasted image 20250601204604.png",
     "AQRCOMP/archivos/imagenes/Pasted image 20250601204518.png",
     "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
     "AQRCOMP/2. Segmentación.md",
     "README.md",
-    "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
     "AQRCOMP/archivos/imagenes/Pasted image 20250601175601.png",
     "AQRCOMP/archivos/bibliografia/Ex2.jpeg",
     "AQRCOMP/archivos/bibliografia/AC-Ejer-III.pdf",
@@ -205,12 +222,7 @@
     "AQRCOMP/archivos/bibliografia/AC-Ejer-I.pdf",
     "AQRCOMP/archivos/bibliografia/00-Introduccion_ARQCOMP_v2425.pdf",
     "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "AQRCOMP/4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché).md",
     "NOTAS TUTORÍA CLANDESTINA.md",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250530170501.png",
-    "archivos/imagenes/Pasted image 20250530141701.png",
-    "archivos/imagenes/Pasted image 20250530141401.png",
-    "archivos/imagenes/Pasted image 20250530141205.png",
     "archivos/imagenes",
     "archivos",
     "BDII/Examen 2025.md",
