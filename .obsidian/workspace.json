@@ -26,15 +26,18 @@
             "id": "2242c9ede5eaf172",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "AQRCOMP/archivos/bibliografia/Ex1.jpeg"
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Ex1"
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -181,16 +184,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d4377b623211b393",
+  "active": "2242c9ede5eaf172",
   "lastOpenFiles": [
-    "AQRCOMP/archivos/imagenes/Pasted image 20250601175601.png",
+    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
+    "AQRCOMP/2. Segmentación.md",
     "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
+    "AQRCOMP/archivos/imagenes/Pasted image 20250601175601.png",
     "AQRCOMP/archivos/bibliografia/Ex2.jpeg",
     "AQRCOMP/archivos/bibliografia/AC-Ejer-III.pdf",
     "AQRCOMP/archivos/bibliografia/AC-Ejer-IV.pdf",
-    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
     "AQRCOMP/archivos/imagenes/Pasted image 20250601172742.png",
-    "AQRCOMP/2. Segmentación.md",
     "AQRCOMP/archivos/imagenes/Pasted image 20250601161242.png",
     "AQRCOMP/archivos/bibliografia/solucion_ej2_240423_103622-3.pdf",
     "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf",
@@ -214,7 +217,6 @@
     "SOII/Examen 2025.md",
     "SOII/Foros2.md",
     "README.md",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250530103547.png",
     "DESOFT/6. Otros Diagramas de Modelado.md",
     "DESOFT/10. Patrones de Comportamiento.md",
     "DESOFT/9. Patrones Estructurales.md",
