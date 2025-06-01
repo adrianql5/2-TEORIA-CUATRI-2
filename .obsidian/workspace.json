@@ -6,45 +6,23 @@
       {
         "id": "cb5a0715aecf84b2",
         "type": "tabs",
+        "dimension": 99.99999999999999,
         "children": [
           {
-            "id": "e266c0deeed66891",
+            "id": "d4377b623211b393",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "AQRCOMP/archivos/bibliografia/Ex1.jpeg"
+                "file": "AQRCOMP/1. Sistemas Multinúcleo.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Ex1"
-            }
-          },
-          {
-            "id": "7d2924c65a5fe17d",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "AQRCOMP/archivos/bibliografia/Ex2.jpeg"
-              },
-              "icon": "lucide-image",
-              "title": "Ex2"
-            }
-          },
-          {
-            "id": "edbdbaa353a15d96",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Ejercicio_Resolto_ArqComp"
+              "icon": "lucide-file",
+              "title": "1. Sistemas Multinúcleo"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -101,7 +79,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "fe6223fe8f51cf24",
@@ -191,15 +170,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "edbdbaa353a15d96",
+  "active": "d4377b623211b393",
   "lastOpenFiles": [
-    "AQRCOMP/archivos/bibliografia/solucion_ej2_240423_103622-3.pdf",
+    "AQRCOMP/archivos/bibliografia/AC-Ejer-IV.pdf",
+    "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf",
     "AQRCOMP/2. Segmentación.md",
-    "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
     "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
-    "AQRCOMP/archivos/bibliografia/AC-Ejer-II.pdf",
+    "AQRCOMP/1. Sistemas Multinúcleo.md",
+    "AQRCOMP/archivos/bibliografia/Ex2.jpeg",
     "AQRCOMP/4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché).md",
+    "AQRCOMP/archivos/bibliografia/00-Introduccion_ARQCOMP_v2425.pdf",
+    "AQRCOMP/archivos/bibliografia/Ex1.jpeg",
+    "AQRCOMP/archivos/bibliografia/solucion_ej2_240423_103622-3.pdf",
+    "AQRCOMP/archivos/bibliografia/AC-Ejer-II.pdf",
     "NOTAS TUTORÍA CLANDESTINA.md",
     "AQRCOMP/archivos/imagenes/Pasted image 20250530170501.png",
     "archivos/imagenes/Pasted image 20250530141701.png",
@@ -208,11 +191,8 @@
     "archivos/imagenes/Pasted image 20250530141113.png",
     "archivos/imagenes",
     "archivos",
-    "AQRCOMP/archivos/bibliografia/Ex2.jpeg",
-    "AQRCOMP/archivos/bibliografia/AC-Ejer-IV.pdf",
     "BDII/Examen 2025.md",
     "AQRCOMP/archivos/bibliografia/AC-Ejer-III.pdf",
-    "AQRCOMP/archivos/bibliografia/Ejercicio_Resolto_ArqComp.pdf",
     "AQRCOMP/archivos/bibliografia/NOTAS FINALES BDII.pdf",
     "COGA/Examen 2025.md",
     "SOII/Foros.md",
@@ -223,7 +203,6 @@
     "AQRCOMP/archivos/imagenes/Pasted image 20250530102239.png",
     "AQRCOMP/archivos/imagenes/Pasted image 20250530102205.png",
     "AQRCOMP/archivos/bibliografia/ArCom_4_Coherencia_cache.pdf",
-    "AQRCOMP/archivos/bibliografia/AC-Ejer-I.pdf",
     "DESOFT/6. Otros Diagramas de Modelado.md",
     "DESOFT/10. Patrones de Comportamiento.md",
     "DESOFT/9. Patrones Estructurales.md",
