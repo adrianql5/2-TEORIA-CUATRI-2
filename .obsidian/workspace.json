@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AQRCOMP/Examen 2025.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Examen 2025"
+              "title": "README"
             }
           }
         ]
@@ -165,11 +165,38 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-full-calendar:Open Full Calendar": false
     }
   },
-  "active": "f89770d9b397cdc8",
+  "active": "6f9d23b13aa39ee0",
   "lastOpenFiles": [
+    "BDII/Información Útil.md",
+    "BDII/4. Control de Concurrencia.md",
+    "BDII/1. SQL Avanzado.md",
+    "BDII/6. Almacenamiento y estructura de archivos.md",
+    "BDII/3. Transacciones.md",
+    "BDII/2. Seguridad.md",
+    "DESOFT/10. Patrones de Comportamiento.md",
+    "DESOFT/9. Patrones Estructurales.md",
+    "DESOFT/8. Patrones de Creación.md",
+    "DESOFT/6. Otros Diagramas de Modelado.md",
+    "DESOFT/5. Modelado Estructural Avanzado.md",
+    "DESOFT/4. Modelado de Comportamiento.md",
+    "DESOFT/3. Modelado Estructural.md",
+    "DESOFT/2. Modelado de Casos de Uso.md",
+    "DESOFT/1. Introducción a UML.md",
+    "SOII/Foros.md",
+    "SOII/Foros2.md",
+    "SOII/Examen 2025.md",
+    "SOII/5. Shell y Scripts.md",
+    "SOII/3. Sistemas en Tiempo Real.md",
+    "SOII/2. Interbloqueos.md",
+    "SOII/1. Comunicación y Sincronización entre Procesos.md",
+    "XEFE/7. Fuentes de Financiación de la Empresa.md",
+    "XEFE/6. Evaluación y Selección de Proyectos.md",
+    "XEFE/5. Fundamentos del Calculo Financiero.md",
+    "XEFE/4. Interpretación y Análisis de la información financiera.md",
     "XEFE/archivos/ExamenesGradoxDrive/Examen2010.pdf",
     "XEFE/archivos/ExamenesGradoxDrive/Examen2022.pdf",
     "XEFE/archivos/ExamenesGradoxDrive/Examen2017.pdf",
@@ -179,10 +206,7 @@
     "XEFE/archivos/ExamenesGradoxDrive",
     "AQRCOMP/archivos/ExamenesGradoxDrive/Examen2025.pdf",
     "AQRCOMP/archivos/ExamenesGradoxDrive/Examen 2025.pdf",
-    "AQRCOMP/Examen 2025.md",
     "AQRCOMP/archivos/imagenes/Pasted image 20250602161129.png",
-    "AQRCOMP/4. Subsistema de Memoria Compartida en Procesadores Multinúcleo (Coherencia caché).md",
-    "DESOFT/3. Modelado Estructural.md",
     "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P6.jpeg",
     "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P5.jpeg",
     "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P4.jpeg",
@@ -190,31 +214,8 @@
     "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P2.jpeg",
     "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P1.jpeg",
     "DESOFT/archivos/ExamenesGradoxDrive/Examen2014.pdf",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2017Test.pdf",
     "DESOFT/archivos/ExamenesGradoxDrive/Examen2024P2.jpeg",
     "DESOFT/archivos/ExamenesGradoxDrive/Examen2024P1.jpeg",
-    "DESOFT/2. Modelado de Casos de Uso.md",
-    "DESOFT/1. Introducción a UML.md",
-    "BDII/4. Control de Concurrencia.md",
-    "BDII/3. Transacciones.md",
-    "BDII/2. Seguridad.md",
-    "BDII/1. SQL Avanzado.md",
-    "BDII/Examen 2025.md",
-    "COGA/Examen 2025.md",
-    "AQRCOMP/archivos/bibliografia/Ex2.jpeg",
-    "AQRCOMP/1. Sistemas Multinúcleo.md",
-    "AQRCOMP/2. Segmentación.md",
-    "AQRCOMP/3. Paralelismo a Nivel de Instrucción.md",
-    "README.md",
-    "NOTAS TUTORÍA CLANDESTINA.md",
-    "SOII/Foros.md",
-    "SOII/Examen 2025.md",
-    "SOII/Foros2.md",
-    "DESOFT/6. Otros Diagramas de Modelado.md",
-    "DESOFT/10. Patrones de Comportamiento.md",
-    "DESOFT/9. Patrones Estructurales.md",
-    "DESOFT/8. Patrones de Creación.md",
-    "DESOFT/7. Patrones de Diseño.md",
-    "2025-06-02 DESOFT.md"
+    "AQRCOMP/archivos/bibliografia/Ex2.jpeg"
   ]
 }

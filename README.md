@@ -6,21 +6,20 @@ Apuntes de segundo de carrera escritos en **Markdown**. Para visualizar correcta
 
 ## 🧠 COGA
 
-- La asignatura con **mayor carga de trabajo** que he visto en mi puta vida.
+- La asignatura con **mayor carga de trabajo** que he visto en mi  vida.  **4.5 créditos es una estafa**.
     
-- Está muy guapa (cuando las cosas funcionan, lo cual no es siempre).
+- Está guapo (cuando las cosas funcionan).
     
-- Se estudia la versión 1.2, que es **useless**.
+- Se estudia la versión 1.2, que no se usa y sigo sin terminar de ver el sentido de darla.
     
-- El profesor es **posiblemente el mayor subnormal** que vais a ver en toda la carrera. La bibliografía es una **mierda**, no le gusta trabajar y los exámenes son **dificilísimos**.
+-  La bibliografía es una **basura**, no le gusta trabajar y los exámenes son bastante **complicados**. El profesor además es bastante personaje.
     
-- **4.5 créditos es una estafa**: las prácticas son complicadas y el examen se le piró bastante.
-    
-- **NO USAR WINDOWS SI TIENES LINUX**: el tipo es capaz de cortarse una pierna antes que bajarse un zip (lo que te permite entregar las prácticas vacías y con tenerlas el dia de la revisón ya está). 
-    
-- Lo de la **pipeline de la 1.2 y la 3.3** es de chiste: no hay fuentes, y los **modelos de sombreado** te los planta en un ejercicio jodidísimo sin explicarte nada.
+- **NO USAR WINDOWS SI TIENES LINUX**: el profesor es capaz de cortarse una pierna antes que bajarse un zip (lo que te permite entregar las prácticas vacías y con tenerlas el dia de la revisón ya está). 
 	
 - Con lo que yo entregué de prácticas saqué un 9. 
+	
+- El examen fue muy difícil
+
 ---
 
 ## 🖥️ SOII
@@ -29,13 +28,13 @@ Apuntes de segundo de carrera escritos en **Markdown**. Para visualizar correcta
     
 - La carga de trabajo es mínima.
     
-- Hacer los **foros**, **suma nota**.
+- Hacer los **foros**, **suma nota** (después de recibir la nota puedo asegurar que este tipo me hizo perder mucho tiempo, no suman nota).
     
 - **No renta ir a clase**.
     
 - El tipo **no da ni una nota** de la continua.
 	
-- En el final la puede liar mucho, pero no suele ser así.
+- El final no es fácil, pero podría haberlo hecho mucho más dificil.
 
 
 ---
@@ -70,6 +69,8 @@ Apuntes de segundo de carrera escritos en **Markdown**. Para visualizar correcta
 - La bibliografía no es tan mierda como la de COGA, pero **le va cerca**.
     
 - Lo más remarcable de su mierda de clase fue cuando nos enseñó que cobraba 5000 euros limpios (sobrada histórica que creo que hace cada año).
+	
+- El examen no me pareció muy complicado
 
 ---
 
@@ -77,9 +78,11 @@ Apuntes de segundo de carrera escritos en **Markdown**. Para visualizar correcta
 
 - Nivel de dificultad **parecido a AED**.
     
-- El profesor es un **puto genio**, pero no iría a clase a no ser que no tengas nada mejor que hacer.
+- El profesor es un **genio**, pero no iría a clase a no ser que no tengas nada mejor que hacer.
     
-- El trabajo de continua requiere currárselo, pero **no es ninguna locura** (no es COGA, vamos).
+- El trabajo de continua requiere currárselo, pero **no es ninguna locura**.
+	
+- El examen es muy fácil, repite muchas preguntas de los tests de años anteriores
 
 ---
 
@@ -89,6 +92,8 @@ Apuntes de segundo de carrera escritos en **Markdown**. Para visualizar correcta
     
 - **No iría a clase**.
     
-- La bibliografía es **una mierda tremenda**.
+- La bibliografía es **una mierda**.
     
 - Las prácticas pueden ser frustrantes, pero **salen**. Solo hay **dos**.    
+	
+- El examen fue bastante asequible
