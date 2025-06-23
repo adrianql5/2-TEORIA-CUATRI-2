@@ -53,6 +53,9 @@ Apuntes de segundo de carrera escritos en **Markdown**. Para visualizar correcta
     
 - El examen **no es fácil**, pero si estudias y entiendes los conceptos, **se aprueba** (no como en COGA).
     
+- El colega en nuestra convocatoria se emocionó y nos mandó ir a más de la mitad de la clase a recuperación, pero solo nos mandó recuperar la parte que suspendimos.
+	
+- Los apuntes que hago son sólo para la parte práctica
 
 ---
 
