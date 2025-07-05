@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "817739b8ba2fae52",
+        "id": "1ea6b03e89cf1efb",
         "type": "tabs",
         "children": [
           {
-            "id": "09e2f47fa30e7415",
+            "id": "2a2edb8ba84396d4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "BDII/5. Hashing.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "5. Hashing"
+              "title": "New tab"
             }
           }
         ]
@@ -160,7 +156,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-full-calendar:Open Full Calendar": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -169,32 +164,45 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "09e2f47fa30e7415",
+  "active": "f89770d9b397cdc8",
   "lastOpenFiles": [
+    "BDII/archivos/bibliografia/bases_datos.pdf",
+    "BDII/Bases II - Mayo 25.pdf",
+    "BDII/archivos/ExamenesGradoxDrive/Examen2025.pdf",
+    "BDII/Examen 2025.md",
+    "Solución 2025.md",
+    "BDII/archivos/bibliografia/BDII_2_Seguridad.pdf",
+    "BDII/Apuntes Prácticos.md",
+    "archivos/imagenes/Pasted image 20250705210545.png",
+    "archivos/imagenes/Pasted image 20250705205228.png",
+    "archivos/imagenes/Pasted image 20250705205059.png",
+    "archivos/imagenes/Pasted image 20250705204927.png",
+    "archivos/imagenes/Pasted image 20250705204356.png",
+    "archivos/imagenes/Pasted image 20250705204207.png",
+    "archivos/imagenes/Pasted image 20250705204145.png",
+    "archivos/imagenes/Pasted image 20250705203047.png",
+    "archivos/imagenes/Pasted image 20250705202715.png",
+    "archivos/imagenes/Pasted image 20250705194631.png",
+    "BDII/archivos/bibliografia/BDII_7_Hashing.pdf",
+    "BDII/archivos/bibliografia/BDII_5_Sistema_recuperacion.pdf",
+    "Untitled.md",
+    "BDII/archivos/bibliografia/BDII_4_Control_concurrencia.pdf",
+    "BDII/archivos/bibliografia/BDII_3_Transacciones.pdf",
+    "BDII/Información Útil.md",
+    "archivos/imagenes",
+    "archivos",
+    "BDII/5. Hashing.md",
     "BDII/4. Sistema de Recuperación.md",
     "BDII/3. Control de Concurrencia.md",
     "BDII/2. Transacciones.md",
     "BDII/1. Seguridad.md",
-    "BDII/archivos/bibliografia/BDII_7_Hashing.pdf",
-    "BDII/archivos/bibliografia/BDII_5_Sistema_recuperacion.pdf",
-    "BDII/archivos/bibliografia/BDII_4_Control_concurrencia.pdf",
-    "BDII/archivos/bibliografia/BDII_3_Transacciones.pdf",
     "BDII/archivos/ExamenesGradoxDrive/Examen2024.pdf",
-    "BDII/archivos/ExamenesGradoxDrive/Examen2025.pdf",
-    "BDII/archivos/bibliografia/BDII_2_Seguridad.pdf",
     "README.md",
-    "BDII/archivos/bibliografia/indexacion y asociacion.pptx",
-    "BDII/archivos/bibliografia/5.-Recuperacion.pptx",
-    "BDII/archivos/bibliografia/4.-Concurrencia.pptx",
     "5. Hashing.md",
-    "BDII/5. Hashing.md",
     "4. Sistema de Recuperación.md",
     "3. Control de Concurrencia.md",
     "2. Transacciones.md",
     "1. Seguridad.md",
-    "Solución 2025.md",
-    "BDII/Examen 2025.md",
-    "BDII/Información Útil.md",
     "BDII/4. Control de Concurrencia.md",
     "BDII/1. SQL Avanzado.md",
     "BDII/6. Almacenamiento y estructura de archivos.md",
@@ -203,18 +211,6 @@
     "DESOFT/10. Patrones de Comportamiento.md",
     "DESOFT/9. Patrones Estructurales.md",
     "DESOFT/8. Patrones de Creación.md",
-    "DESOFT/6. Otros Diagramas de Modelado.md",
-    "DESOFT/5. Modelado Estructural Avanzado.md",
-    "DESOFT/4. Modelado de Comportamiento.md",
-    "AQRCOMP/archivos/imagenes/Pasted image 20250602161129.png",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P6.jpeg",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P5.jpeg",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P4.jpeg",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P3.jpeg",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P2.jpeg",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2023P1.jpeg",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2024P2.jpeg",
-    "DESOFT/archivos/ExamenesGradoxDrive/Examen2024P1.jpeg",
-    "AQRCOMP/archivos/bibliografia/Ex2.jpeg"
+    "DESOFT/6. Otros Diagramas de Modelado.md"
   ]
 }
